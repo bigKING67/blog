@@ -6,7 +6,7 @@ const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "Whois67",
+	title: "whois67",
 
 	// 站点副标题
 	subtitle: "记录与折腾",
@@ -15,11 +15,11 @@ export const siteConfig: SiteConfig = {
 	site_url: "https://whois67.52671314.xyz",
 
 	// 站点描述
-	description: "Whois67 的个人博客，记录技术学习、项目折腾与日常思考。",
+	description: "whois67 的个人博客，记录技术学习、项目折腾与日常思考。",
 
 	// 站点关键词
 	keywords: [
-		"Whois67",
+		"whois67",
 		"bigKING67",
 		"博客",
 		"技术博客",
@@ -79,7 +79,7 @@ export const siteConfig: SiteConfig = {
 			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "Whois67",
+		title: "whois67",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中

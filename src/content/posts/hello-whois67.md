@@ -1,5 +1,5 @@
 ---
-title: Hello, Whois67
+title: Hello, whois67
 published: 2026-08-02
 description: 建站第一篇：从 Firefly 模板到自己的小站。
 tags: [建站, 随笔]
@@ -9,7 +9,7 @@ pinned: true
 comment: true
 ---
 
-这是 **Whois67** 博客的第一篇文章。
+这是 **whois67** 博客的第一篇文章。
 
 ## 这个站是什么
 

@@ -5,7 +5,7 @@ export const announcementConfig: AnnouncementConfig = {
 	title: "公告",
 
 	// 公告内容
-	content: "欢迎来到 Whois67 的博客，站点还在逐步完善中。",
+	content: "欢迎来到 whois67 的博客，站点还在逐步完善中。",
 
 	// 是否允许用户关闭公告
 	closable: true,
