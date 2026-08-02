@@ -9,7 +9,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	showInSidebar: true,
 
 	// 使用方式："meting" 使用 Meting API，"local" 使用本地音乐列表
-	mode: "meting",
+	mode: "local",
 
 	// 默认音量 (0-1)
 	volume: 0.7,
@@ -18,36 +18,29 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	playMode: "one",
 
 	// 是否显启用歌词
-	showLyrics: true,
+	showLyrics: false,
 
-	// Meting API 配置
+	// Meting API 配置（备用；当前使用 local）
 	meting: {
-		// Meting API 地址
-		// 默认使用官方 API，也可以使用自定义 API
 		api: "https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r",
-		// 音乐平台：netease=网易云音乐, tencent=QQ音乐, kugou=酷狗音乐, xiami=虾米音乐, baidu=百度音乐
 		server: "netease",
-		// 类型：song=单曲, playlist=歌单, album=专辑, search=搜索, artist=艺术家
 		type: "song",
-		// Radiohead - Let Down（OK Computer）网易云单曲 ID
 		id: "22497474",
-		// 认证 token（可选）
 		auth: "",
-		// 备用 API 配置（当主 API 失败时使用）
 		fallbackApis: [
 			"https://api.injahow.cn/meting/?server=:server&type=:type&id=:id",
 			"https://api.moeyao.cn/meting/?server=:server&type=:type&id=:id",
 		],
 	},
 
-	// 本地音乐配置（当 mode 为 'local' 时使用）
+	// 本地音乐：Radiohead - Let Down + OK Computer 封面
 	local: {
 		playlist: [
 			{
 				name: "Let Down",
 				artist: "Radiohead",
-				url: "",
-				cover: "",
+				url: "/assets/music/Radiohead-Let-Down.mp3",
+				cover: "/assets/music/cover/ok-computer.jpg",
 				lrc: "",
 			},
 		],
