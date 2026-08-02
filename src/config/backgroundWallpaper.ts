@@ -120,10 +120,9 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	},
 	// Banner模式特有配置
 	banner: {
-		// 图片位置
-		// 支持所有CSS object-position值，如: 'top', 'center', 'bottom', 'left top', 'right bottom', '25% 75%', '10px 20px'..
-		// 如果不知道怎么配置百分百之类的配置，推荐直接使用：'center'居中，'top'顶部居中，'bottom' 底部居中，'left'左侧居中，'right'右侧居中
-		position: "0% 20%",
+		// 图片位置（object-position）：第二值越大，画面焦点越偏图下方 → 月球在横幅里显得更高
+		// 原 0% 20% 时月亮偏下、压住标题；改为偏右上展示
+		position: "70% 78%",
 	},
 	// 全屏透明覆盖模式特有配置
 	overlay: {

@@ -15,7 +15,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	volume: 0.7,
 
 	// 播放模式：'list'=列表循环, 'one'=单曲循环, 'random'=随机播放
-	playMode: "list",
+	playMode: "one",
 
 	// 是否显启用歌词
 	showLyrics: true,
@@ -28,9 +28,9 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 		// 音乐平台：netease=网易云音乐, tencent=QQ音乐, kugou=酷狗音乐, xiami=虾米音乐, baidu=百度音乐
 		server: "netease",
 		// 类型：song=单曲, playlist=歌单, album=专辑, search=搜索, artist=艺术家
-		type: "playlist",
-		// 歌单/专辑/单曲 ID 或搜索关键词
-		id: "10046455237",
+		type: "song",
+		// Radiohead - Let Down（OK Computer）网易云单曲 ID
+		id: "22497474",
 		// 认证 token（可选）
 		auth: "",
 		// 备用 API 配置（当主 API 失败时使用）
@@ -41,17 +41,13 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	},
 
 	// 本地音乐配置（当 mode 为 'local' 时使用）
-	// 1. 支持传入歌词文件的路径
-	// lrc: "/assets/music/lrc/使一颗心免于哀伤-哼唱.lrc",
-	// 2. 或者直接填入歌词字符串内容
-	// lrc: "[00:00.00]歌词内容...",
 	local: {
 		playlist: [
 			{
-				name: "使一颗心免于哀伤",
-				artist: "知更鸟 / HOYO-MiX / Chevy",
-				url: "/assets/music/使一颗心免于哀伤-哼唱.mp3",
-				cover: "/assets/music/cover/109951169585655912.webp",
+				name: "Let Down",
+				artist: "Radiohead",
+				url: "",
+				cover: "",
 				lrc: "",
 			},
 		],
