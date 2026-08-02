@@ -56,9 +56,11 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			title: "I'm 67",
 			// 主页横幅主标题字体大小
 			titleSize: "4.5rem",
-			// 主页横幅副标题
+			// 主页横幅副标题（多条会依次打字/删除循环；单条也会循环）
 			subtitle: [
-				"Welcome to sixseven's blog👏Here we go～好好学习，天天向上👆",
+				"Welcome to sixseven's blog👏",
+				"Here we go～",
+				"好好学习，天天向上👆",
 			],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",
@@ -68,11 +70,11 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				// 打字机关闭 → 每次刷新随机显示一条副标题
 				enable: true,
 				// 打字速度（毫秒）
-				speed: 100,
+				speed: 90,
 				// 删除速度（毫秒）
-				deleteSpeed: 50,
+				deleteSpeed: 45,
 				// 完全显示后的暂停时间（毫秒）
-				pauseTime: 2000,
+				pauseTime: 2200,
 			},
 		},
 		// 文章横幅信息："description" 显示描述，"meta" 显示日期、字数和阅读时长
@@ -120,9 +122,8 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	},
 	// Banner模式特有配置
 	banner: {
-		// 图片位置（object-position）：第二值越大，画面焦点越偏图下方 → 月球在横幅里显得更高
-		// 原 0% 20% 时月亮偏下、压住标题；改为偏右上展示
-		position: "70% 78%",
+		// 图片位置：居中展示月球
+		position: "center",
 	},
 	// 全屏透明覆盖模式特有配置
 	overlay: {
