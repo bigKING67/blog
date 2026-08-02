@@ -59,10 +59,10 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 相册
 			LinkPresets.Gallery,
 
-			// 追番
+			// 影视
 			LinkPresets.Anime,
 
-			// 番组计划
+			// 阅读计划
 			LinkPresets.Bangumi,
 		],
 	});
@@ -90,38 +90,18 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		children: [
 			{
 				name: "GitHub",
-				url: "https://github.com/CuteLeaf/Firefly",
+				url: "https://github.com/bigKING67",
 				external: true,
 				icon: "fa7-brands:github",
 			},
 			{
-				name: "Gitee",
-				url: "https://gitee.com/CuteLeaf/Firefly",
+				name: "博客仓库",
+				url: "https://github.com/bigKING67/blog",
 				external: true,
-				icon: "fa7-brands:gitee",
-			},
-			{
-				name: "QQ交流群",
-				url: "https://qm.qq.com/q/ZGsFa8qX2G",
-				external: true,
-				icon: "fa7-brands:qq",
-			},
-			{
-				name: "Firefly文档",
-				url: "https://docs-firefly.cuteleaf.cn",
-				external: true,
-				icon: "material-symbols:docs",
+				icon: "material-symbols:code",
 			},
 		],
 	});
-
-	// 文档链接
-	// links.push({
-	// 	name: "文档",
-	// 	url: "https://docs-firefly.cuteleaf.cn",
-	// 	external: true,
-	// 	icon: "material-symbols:docs",
-	// });
 
 	return { links } as NavBarConfig;
 };
@@ -186,9 +166,9 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		icon: "material-symbols:person",
 	},
 	Bangumi: {
-		name: "番组计划",
-		url: "/bangumi/",
-		icon: "material-symbols:movie",
+		name: "阅读计划",
+		url: "/reading/",
+		icon: "material-symbols:menu-book-rounded",
 		pageKey: "bangumi",
 	},
 	Gallery: {
@@ -198,9 +178,9 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		pageKey: "gallery",
 	},
 	Anime: {
-		name: "追番",
-		url: "/anime/",
-		icon: "material-symbols:live-tv",
+		name: "影视",
+		url: "/movies/",
+		icon: "material-symbols:movie",
 		pageKey: "anime",
 	},
 };

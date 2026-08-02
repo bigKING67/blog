@@ -2,6 +2,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils";
+import { POST_CATEGORIES } from "@/config/categoryConfig";
 
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
@@ -103,14 +104,26 @@ export async function getCategoryList(): Promise<Category[]> {
 		count[categoryName] = count[categoryName] ? count[categoryName] + 1 : 1;
 	});
 
-	const lst = Object.keys(count).sort((a, b) => {
-		return (
-			count[b] - count[a] || a.toLowerCase().localeCompare(b.toLowerCase())
-		);
-	});
-
+	// 固定展示预设分类（即使 count 为 0），顺序见 categoryConfig
 	const ret: Category[] = [];
-	for (const c of lst) {
+	const used = new Set<string>();
+	for (const c of POST_CATEGORIES) {
+		used.add(c);
+		ret.push({
+			name: c,
+			count: count[c] || 0,
+			url: getCategoryUrl(c),
+		});
+	}
+
+	// 历史/临时分类（不在预设里）仍展示，排在后面
+	const extras = Object.keys(count)
+		.filter((c) => !used.has(c))
+		.sort(
+			(a, b) =>
+				count[b] - count[a] || a.toLowerCase().localeCompare(b.toLowerCase()),
+		);
+	for (const c of extras) {
 		ret.push({
 			name: c,
 			count: count[c],

@@ -5,29 +5,54 @@ interface Props {
 	path: string;
 }
 
+const serverURL =
+	import.meta.env.WALINE_SERVER_URL ||
+	process.env.WALINE_SERVER_URL ||
+	commentConfig.waline?.serverURL ||
+	"";
+
 const config = {
 	...commentConfig.waline,
+	serverURL,
 	el: "#waline",
 	path: Astro.props.path,
 	dark: "html.dark",
-	wordLimit: ["2", "300"],
+	// 匿名：昵称必填，邮箱选填更友好
+	requiredMeta: ["nick"],
+	wordLimit: [0, 1000],
 	...(commentConfig.waline?.visitorCount ? { pageview: true } : {}),
 };
 ---
-<!-- Waline -->
+<!-- Waline：匿名访客留言（需自建 serverURL） -->
 <div class="relative w-full">
-  <div id="waline"></div>
-  <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
-  <script type="module" is:inline define:vars={{ config }}>
-    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
-    const requestedPath = new URLSearchParams(window.location.search).get("path");
-    const effectiveConfig = requestedPath
-      ? { ...config, path: requestedPath }
-      : config;
-    try {
-      init(effectiveConfig);
-    } catch (error) {
-      console.error("[Waline] Failed to initialize:", error);
-    }
-  </script>
+  {!serverURL ? (
+    <div class="rounded-xl border border-(--line-divider) bg-(--btn-regular-bg)/40 px-4 py-6 text-sm text-neutral-600 dark:text-neutral-300">
+      <p class="font-medium text-neutral-800 dark:text-neutral-100 mb-2">评论服务尚未配置后端</p>
+      <p class="leading-relaxed">
+        已启用 Waline 匿名留言模式。请部署 Waline 服务后，在环境变量中设置
+        <code class="mx-1">WALINE_SERVER_URL</code>
+        （本地写在 <code class="mx-1">.env</code>，Cloudflare 写在项目环境变量）。
+      </p>
+      <p class="mt-2 text-xs opacity-80">
+        文档：https://waline.js.org/guide/get-started.html
+      </p>
+    </div>
+  ) : (
+    <>
+      <div id="waline"></div>
+      <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+      <script type="module" is:inline define:vars={{ config }}>
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        const requestedPath = new URLSearchParams(window.location.search).get("path");
+        const effectiveConfig = requestedPath
+          ? { ...config, path: requestedPath }
+          : config;
+        try {
+          init(effectiveConfig);
+        } catch (error) {
+          console.error("[Waline] Failed to initialize:", error);
+        }
+      </script>
+    </>
+  )}
 </div>

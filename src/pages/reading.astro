@@ -1,0 +1,283 @@
+---
+import { Icon } from "astro-icon/components";
+import { siteConfig } from "@/config";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { formatDateI18nWithTime } from "@/utils/date-utils";
+import {
+	fetchWereadReadingData,
+	formatReadDuration,
+	type WereadBook,
+} from "@/utils/weread";
+
+// 阅读计划页：微信读书（构建时拉取，密钥仅服务端 env）
+if (!siteConfig.pages.bangumi) {
+	return Astro.redirect("/404/");
+}
+
+const buildTime = formatDateI18nWithTime(new Date());
+const data = await fetchWereadReadingData();
+
+function formatReadDate(ts: number): string {
+	if (!ts) return "";
+	const d = new Date(ts * 1000);
+	const y = d.getFullYear();
+	const m = String(d.getMonth() + 1).padStart(2, "0");
+	const day = String(d.getDate()).padStart(2, "0");
+	return `${y}-${m}-${day}`;
+}
+
+const durationText = formatReadDuration(data.totalReadTimeSec);
+const isEmpty = data.configured && !data.error && data.books.length === 0;
+
+function renderBookCard(book: WereadBook, finished = false) {
+	const dateText = formatReadDate(book.readUpdateTime);
+	return { book, finished, dateText };
+}
+
+const readingCards = data.reading.map((b) => renderBookCard(b, false));
+const finishedCards = data.finished.map((b) => renderBookCard(b, true));
+---
+
+<MainGridLayout title={i18n(I18nKey.bangumi)} description={i18n(I18nKey.bangumiSubtitle)}>
+  <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+    <div class="card-base z-10 px-4 sm:px-6 md:px-9 py-4 sm:py-6 relative w-full">
+      <div class="relative w-full mb-8">
+        <div class="mb-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="h-8 w-8 rounded-lg bg-(--primary) flex items-center justify-center text-white dark:text-black/70">
+              <Icon is:inline name="material-symbols:menu-book-rounded" class="text-[1.5rem]" />
+            </div>
+            <div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+              {i18n(I18nKey.bangumi)}
+            </div>
+          </div>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            {i18n(I18nKey.bangumiSubtitle)}
+          </p>
+          <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2">
+            数据来自微信读书 · 仅展示公开书架 · {i18n(I18nKey.bangumiLastUpdated)} {buildTime}
+          </p>
+        </div>
+
+        {!data.configured ? (
+          <div class="text-center py-16">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-(--btn-regular-bg) rounded-full mb-6 border border-(--line-divider)">
+              <Icon is:inline name="material-symbols:settings" class="text-[2rem] text-(--btn-content)" />
+            </div>
+            <h2 class="text-xl font-semibold text-black/80 dark:text-white/80 mb-3">
+              未配置微信读书
+            </h2>
+            <p class="text-black/60 dark:text-white/60 mb-4 max-w-md mx-auto">
+              请在项目根目录 .env 中设置 WEREAD_API_KEY（勿提交到 Git），然后重启开发服务器。
+            </p>
+          </div>
+        ) : data.error ? (
+          <div class="text-center py-16">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-red-500/10 rounded-full mb-6 border border-red-500/20">
+              <Icon is:inline name="material-symbols:error-outline" class="text-[2rem] text-red-500" />
+            </div>
+            <h2 class="text-xl font-semibold text-black/80 dark:text-white/80 mb-3">
+              微信读书数据拉取失败
+            </h2>
+            <p class="text-black/60 dark:text-white/60 mb-4 max-w-md mx-auto break-all">
+              {data.error}
+            </p>
+          </div>
+        ) : (
+          <>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+              {data.stats.length > 0 ? (
+                data.stats.map((s) => (
+                  <div class="bg-(--card-bg) rounded-xl p-3 sm:p-4 border border-(--line-divider)">
+                    <div class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-400 mb-1">
+                      {s.stat}
+                    </div>
+                    <div class="text-lg sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+                      {s.counts}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <>
+                  <div class="bg-(--card-bg) rounded-xl p-3 sm:p-4 border border-(--line-divider)">
+                    <div class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-400 mb-1">公开书架</div>
+                    <div class="text-lg sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100">{data.books.length}</div>
+                  </div>
+                  <div class="bg-(--card-bg) rounded-xl p-3 sm:p-4 border border-(--line-divider)">
+                    <div class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-400 mb-1">已读完</div>
+                    <div class="text-lg sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100">{data.finished.length}</div>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div class="flex flex-wrap gap-3 text-sm text-neutral-600 dark:text-neutral-400 mb-8">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-(--primary)/10 text-(--primary)">
+                <Icon is:inline name="material-symbols:schedule" class="text-base" />
+                累计阅读 {durationText}
+              </span>
+              {data.readDays > 0 && (
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-(--btn-regular-bg) border border-(--line-divider)">
+                  阅读天数 {data.readDays} 天
+                </span>
+              )}
+              {data.preferCategoryWord && (
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-(--btn-regular-bg) border border-(--line-divider)">
+                  {data.preferCategoryWord}
+                </span>
+              )}
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-(--btn-regular-bg) border border-(--line-divider)">
+                公开展示 {data.books.length} 本 · 在读 {data.reading.length} · 已读完 {data.finished.length}
+              </span>
+            </div>
+
+            {isEmpty ? (
+              <div class="text-center py-12 text-neutral-500 dark:text-neutral-400">
+                公开书架暂无书籍。可在微信读书将想展示的书设为公开阅读。
+              </div>
+            ) : (
+              <div class="space-y-10">
+                {readingCards.length > 0 && (
+                  <section>
+                    <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
+                      <Icon is:inline name="material-symbols:auto-stories" class="text-(--primary)" />
+                      在读 / 书架
+                      <span class="text-sm font-normal text-neutral-500">({readingCards.length})</span>
+                    </h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+                      {readingCards.map(({ book, dateText }) => (
+                        book.deepLink ? (
+                          <a
+                            href={book.deepLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group flex flex-col rounded-xl border border-(--line-divider) bg-(--card-bg) overflow-hidden hover:border-(--primary)/40 transition-colors"
+                          >
+                            <div class="relative aspect-3/4 bg-neutral-200/40 dark:bg-neutral-800/40 overflow-hidden">
+                              {book.cover ? (
+                                <img
+                                  src={book.cover}
+                                  alt={book.title}
+                                  class="h-full w-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                                  loading="lazy"
+                                  referrerpolicy="no-referrer"
+                                />
+                              ) : (
+                                <div class="h-full w-full flex items-center justify-center text-neutral-400">
+                                  <Icon is:inline name="material-symbols:menu-book" class="text-4xl" />
+                                </div>
+                              )}
+                            </div>
+                            <div class="p-2.5 sm:p-3 flex flex-col gap-1 min-h-18">
+                              <div class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 line-clamp-2 leading-snug">
+                                {book.title}
+                              </div>
+                              {book.author && (
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-1">
+                                  {book.author}
+                                </div>
+                              )}
+                              {dateText && (
+                                <div class="text-[10px] text-neutral-400 mt-auto">最近 {dateText}</div>
+                              )}
+                            </div>
+                          </a>
+                        ) : (
+                          <div class="group flex flex-col rounded-xl border border-(--line-divider) bg-(--card-bg) overflow-hidden">
+                            <div class="relative aspect-3/4 bg-neutral-200/40 dark:bg-neutral-800/40 overflow-hidden">
+                              {book.cover ? (
+                                <img
+                                  src={book.cover}
+                                  alt={book.title}
+                                  class="h-full w-full object-cover"
+                                  loading="lazy"
+                                  referrerpolicy="no-referrer"
+                                />
+                              ) : null}
+                            </div>
+                            <div class="p-2.5 sm:p-3">
+                              <div class="text-sm font-semibold line-clamp-2">{book.title}</div>
+                              {book.author && <div class="text-xs text-neutral-500 line-clamp-1">{book.author}</div>}
+                            </div>
+                          </div>
+                        )
+                      ))}
+                    </div>
+                  </section>
+                )}
+
+                {finishedCards.length > 0 && (
+                  <section>
+                    <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
+                      <Icon is:inline name="material-symbols:check-circle" class="text-emerald-500" />
+                      已读完
+                      <span class="text-sm font-normal text-neutral-500">({finishedCards.length})</span>
+                    </h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+                      {finishedCards.map(({ book, dateText }) => (
+                        book.deepLink ? (
+                          <a
+                            href={book.deepLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group flex flex-col rounded-xl border border-(--line-divider) bg-(--card-bg) overflow-hidden hover:border-(--primary)/40 transition-colors"
+                          >
+                            <div class="relative aspect-3/4 bg-neutral-200/40 dark:bg-neutral-800/40 overflow-hidden">
+                              {book.cover ? (
+                                <img
+                                  src={book.cover}
+                                  alt={book.title}
+                                  class="h-full w-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                                  loading="lazy"
+                                  referrerpolicy="no-referrer"
+                                />
+                              ) : (
+                                <div class="h-full w-full flex items-center justify-center text-neutral-400">
+                                  <Icon is:inline name="material-symbols:menu-book" class="text-4xl" />
+                                </div>
+                              )}
+                              <span class="absolute top-2 left-2 text-[10px] px-1.5 py-0.5 rounded bg-emerald-500 text-white">
+                                已读完
+                              </span>
+                            </div>
+                            <div class="p-2.5 sm:p-3 flex flex-col gap-1 min-h-18">
+                              <div class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 line-clamp-2 leading-snug">
+                                {book.title}
+                              </div>
+                              {book.author && (
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-1">
+                                  {book.author}
+                                </div>
+                              )}
+                              {dateText && (
+                                <div class="text-[10px] text-neutral-400 mt-auto">最近 {dateText}</div>
+                              )}
+                            </div>
+                          </a>
+                        ) : (
+                          <div class="group flex flex-col rounded-xl border border-(--line-divider) bg-(--card-bg) overflow-hidden">
+                            <div class="relative aspect-3/4 overflow-hidden">
+                              {book.cover && (
+                                <img src={book.cover} alt={book.title} class="h-full w-full object-cover" loading="lazy" referrerpolicy="no-referrer" />
+                              )}
+                              <span class="absolute top-2 left-2 text-[10px] px-1.5 py-0.5 rounded bg-emerald-500 text-white">已读完</span>
+                            </div>
+                            <div class="p-2.5 sm:p-3">
+                              <div class="text-sm font-semibold line-clamp-2">{book.title}</div>
+                            </div>
+                          </div>
+                        )
+                      ))}
+                    </div>
+                  </section>
+                )}
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+</MainGridLayout>

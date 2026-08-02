@@ -246,13 +246,13 @@ export default defineConfig({
 				if (pathname === "/guestbook/" && !siteConfig.pages.guestbook) {
 					return false;
 				}
-				if (pathname === "/bangumi/" && !siteConfig.pages.bangumi) {
+				if (pathname === "/reading/" && !siteConfig.pages.bangumi) {
 					return false;
 				}
 				if (pathname === "/gallery/" && !siteConfig.pages.gallery) {
 					return false;
 				}
-				if (pathname === "/anime/" && !siteConfig.pages.anime) {
+				if (pathname === "/movies/" && !siteConfig.pages.anime) {
 					return false;
 				}
 

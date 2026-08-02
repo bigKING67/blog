@@ -41,3 +41,6 @@ package/
 .codex*
 .claude
 .mimocode
+# local env variants (keep .env.example tracked)
+.env.local
+.env.*.local

@@ -6,27 +6,25 @@ const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "Firefly",
+	title: "Whois67",
 
 	// 站点副标题
-	subtitle: "Demo site",
+	subtitle: "记录与折腾",
 
-	// 站点 URL
-	site_url: "https://firefly.cuteleaf.cn",
+	// 站点 URL（Cloudflare 自定义域名）
+	site_url: "https://whois67.52671314.xyz",
 
 	// 站点描述
-	description:
-		"Firefly 是一款基于 Astro 框架和 Fuwari 模板开发的清新美观且现代化个人博客主题模板，专为技术爱好者和内容创作者设计。该主题融合了现代 Web 技术栈，提供了丰富的功能模块和高度可定制的界面，让您能够轻松打造出专业且美观的个人博客网站。",
+	description: "Whois67 的个人博客，记录技术学习、项目折腾与日常思考。",
 
 	// 站点关键词
 	keywords: [
-		"Firefly",
-		"Fuwari",
-		"Astro",
-		"ACGN",
+		"Whois67",
+		"bigKING67",
 		"博客",
 		"技术博客",
-		"静态博客",
+		"个人博客",
+		"Astro",
 	],
 
 	// 主题色
@@ -81,7 +79,7 @@ export const siteConfig: SiteConfig = {
 			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "Firefly",
+		title: "Whois67",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
@@ -93,7 +91,7 @@ export const siteConfig: SiteConfig = {
 	},
 
 	// 站点开始日期，用于统计运行天数
-	siteStartDate: "2025-01-01",
+	siteStartDate: "2026-08-02",
 
 	// 站点时区（IANA 时区字符串），用于格式化bangumi、rss里的构建日期时间等等..
 	// 示例："Asia/Shanghai", "UTC", 如果为空，则按照构建服务器的时区进行时区转换
@@ -101,17 +99,17 @@ export const siteConfig: SiteConfig = {
 
 	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404并自动隐藏对应的导航栏菜单项
 	pages: {
-		// 友链页面开关
-		friends: true,
+		// 友链页面开关（暂无真实友链，先关）
+		friends: false,
 		// 打赏页面开关
 		sponsor: true,
-		// 留言板页面开关，需要配置评论系统
+		// 留言板页面开关（Giscus 评论）
 		guestbook: true,
-		// 番组计划页面开关，含追番、游戏、书籍和音乐
+		// 阅读计划页面开关（微信读书）
 		bangumi: true,
-		// 相册页面开关
-		gallery: true,
-		// 追番页面开关
+		// 相册页面开关（暂无相册，先关）
+		gallery: false,
+		// 影视页面开关（B 站）
 		anime: true,
 		// 动态页面开关
 		dynamic: true,
@@ -191,10 +189,10 @@ export const siteConfig: SiteConfig = {
 		generateOgImages: false,
 	},
 
-	// bangumi配置
+	// 阅读计划配置（底层对接 Bangumi，默认只保留书籍分类）
 	bangumi: {
-		// Bangumi用户ID
-		userId: "1143164",
+		// 你的 Bangumi 用户 ID（没有就先留空，页面会显示未配置）
+		userId: "",
 		// 数据模式：static=构建时获取，dynamic=客户端实时获取
 		// static 模式在构建时获取数据并静态渲染，部署后数据不更新
 		// dynamic 模式在浏览器中实时请求 API，始终显示最新数据
@@ -203,30 +201,32 @@ export const siteConfig: SiteConfig = {
 		apiUrl: "https://bgmapi.anibt.net",
 		// 详情页地址
 		subjectBaseUrl: "https://bgmmi.anibt.net/subject/",
-		// 条目类型排序，数组中的类型将按顺序优先展示
+		// 阅读计划优先展示书籍
 		// 可选值: "anime" | "book" | "music" | "game" | "real" (暂不支持"real"类型)
-		// 未列出的类型将按默认顺序排在后面
-		categoryOrder: ["anime", "book", "music", "game"],
-		// 控制各分类的启用状态（true/false），未指定的分类默认启用
-		// categories: {
-		// 	game: false, // 禁用游戏分类显示
-		// },
+		categoryOrder: ["book"],
+		// 只启用书籍，关闭动画/音乐/游戏，让页面更像「阅读计划」
+		categories: {
+			book: true,
+			anime: false,
+			music: false,
+			game: false,
+			real: false,
+		},
 	},
 
-	// 追番配置（Bilibili + TMDB）
+	// 影视配置（底层对接 Bilibili + TMDB）
+	// B 站 UID 是公开空间 ID，可写在配置里。
+	// TMDB API Key / List ID 等密钥仍只放 .env，见 movies.astro 与 .env.example。
 	anime: {
-		// Bilibili 配置
 		bilibili: {
-			// 你的 Bilibili 用户 UID
-			uid: "38932988",
+			// https://space.bilibili.com/94339705
+			uid: "94339705",
 		},
-		// TMDB 配置（可选，需要翻墙）
-		// tmdb: {
-		//   // TMDB API 密钥
-		//   apiKey: "your_tmdb_api_key",
-		//   // TMDB 列表 ID
-		//   listId: "your_list_id",
-		// },
+		tmdb: {
+			// 密钥与 List ID 从环境变量读取，这里留空
+			apiKey: "",
+			listId: "",
+		},
 	},
 
 	// 分页配置

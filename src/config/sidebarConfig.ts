@@ -79,8 +79,8 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			showOnPostPage: true,
 			// 组件专属配置
 			specificConfig: {
-				// 折叠阈值：当分类数量超过>5个时自动折叠
-				collapseThreshold: 5,
+				// 5 个固定分类，阈值调高避免默认折叠
+				collapseThreshold: 8,
 			},
 		},
 		{
@@ -263,8 +263,8 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			showOnPostPage: true,
 			// 组件专属配置
 			specificConfig: {
-				// 折叠阈值：当分类数量超过5个时自动折叠
-				collapseThreshold: 5,
+				// 5 个固定分类，阈值调高避免默认折叠
+				collapseThreshold: 8,
 			},
 		},
 		{

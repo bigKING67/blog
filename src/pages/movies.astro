@@ -18,11 +18,24 @@ if (!siteConfig.pages.anime) {
 // 获取构建时间
 const buildTime = formatDateI18nWithTime(new Date());
 
-// 追番配置
+// 影视数据源：优先环境变量（.env / CI secrets），配置文件仅作回退
+// 切勿把密钥写进 siteConfig 或提交 .env
 const animeConfig = siteConfig.anime;
-const TMDB_API_KEY = animeConfig?.tmdb?.apiKey;
-const TMDB_LIST_ID = animeConfig?.tmdb?.listId;
-const BILIBILI_UID = animeConfig?.bilibili?.uid;
+const TMDB_API_KEY =
+	import.meta.env.TMDB_API_KEY ||
+	process.env.TMDB_API_KEY ||
+	animeConfig?.tmdb?.apiKey ||
+	"";
+const TMDB_LIST_ID =
+	import.meta.env.TMDB_LIST_ID ||
+	process.env.TMDB_LIST_ID ||
+	animeConfig?.tmdb?.listId ||
+	"";
+const BILIBILI_UID =
+	import.meta.env.BILIBILI_UID ||
+	process.env.BILIBILI_UID ||
+	animeConfig?.bilibili?.uid ||
+	"";
 const TMDB_IMG = "https://image.tmdb.org/t/p/w500";
 
 // ============ 类型定义 ============

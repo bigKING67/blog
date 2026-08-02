@@ -1,29 +1,35 @@
-# 关于我 / About Me
+# 关于我
 
-你好！我是 **夏叶** ，一个在数字世界中默默无闻的一片叶子。
+你好，我是 **Whois67**（也叫 67 / sixseven）。
 
-## 🛠️ 关于本站
+这里是我的个人小站，用来记一点技术折腾、读书看电影，以及偶尔冒出来的想法。口号很土，但我喜欢：**好好学习，天天向上。**
 
-这个网站使用 **Astro** 框架构建，采用了 [Firefly](https://github.com/CuteLeaf/Firefly) 模板，Firefly 是基于 [Fuwari](https://github.com/saicaca/fuwari) 的二次开发。
+## 这个站在做什么
 
-**Firefly** 是一款基于 Astro 框架和 Fuwari 模板开发的清新美观且现代化个人博客主题模板，专为技术爱好者和内容创作者设计。该主题融合了现代 Web 技术栈，提供了丰富的功能模块和高度可定制的界面，让您能够轻松打造出专业且美观的个人博客网站。
+- **文章**：写一点学习笔记、项目碎碎念和日常记录  
+- **影视**：同步 B 站公开的追番 / 追剧  
+- **阅读计划**：同步微信读书的公开书架与阅读统计  
+- **动态**：短一点的碎碎念（还在慢慢填）
 
+站点基于 [Astro](https://astro.build/) 与 [Firefly](https://github.com/CuteLeaf/Firefly) 主题搭建，托管在 Cloudflare，地址为 [whois67.52671314.xyz](https://whois67.52671314.xyz)。内容与配置都在 Git 仓库里维护。
 
-**🖥️在线预览： [Firefly - Demo site](https://firefly.cuteleaf.cn/)**
+## 你可以在这儿找到
 
-**🏠我的博客： [https://blog.cuteleaf.cn](https://blog.cuteleaf.cn/)**
+| 入口 | 说明 |
+|------|------|
+| [影视](/movies/) | B 站追番追剧 |
+| [阅读计划](/reading/) | 微信读书公开书架 |
+| [归档](/archive/) | 全部文章 |
+| [打赏](/sponsor/) | 如果内容帮到你，随意请杯咖啡 |
 
-**📝Firefly使用文档： [https://docs-firefly.cuteleaf.cn](https://docs-firefly.cuteleaf.cn/)**
+## 联系方式
 
-**⭐Firefly开源地址：[https://github.com/CuteLeaf/Firefly](https://github.com/CuteLeaf/Firefly)** 
-
-**⭐Fuwari开源地址：[https://github.com/saicaca/fuwari](https://github.com/saicaca/fuwari)**
-
-::github{repo="CuteLeaf/Firefly"}
-
-::github{repo="saicaca/fuwari"}
+- GitHub：[@bigKING67](https://github.com/bigKING67)  
+- 邮箱：[525836137@qq.com](mailto:525836137@qq.com)  
+- 博客仓库：[bigKING67/blog](https://github.com/bigKING67/blog)
 
 ---
 
-*感谢你的来访！希望在这里能找到对你有用的内容！*
+谢谢你点进来。若某一篇对你有用，那这站就没白搭。
 
+*I'm 67 — Welcome to sixseven's blog.*
