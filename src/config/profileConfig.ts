@@ -39,5 +39,11 @@ export const profileConfig: ProfileConfig = {
 			url: "/rss/",
 			showName: false,
 		},
+		{
+			name: "简历",
+			icon: "material-symbols:badge-outline",
+			url: "/resume/",
+			showName: false,
+		},
 	],
 };

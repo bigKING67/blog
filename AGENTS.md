@@ -25,6 +25,14 @@ Biome is the formatter and linter. It uses tabs for indentation and double quote
 
 There is no dedicated unit-test framework configured. Before submitting changes, run `pnpm check`, `pnpm type-check`, and `pnpm build` for rendering, content, or generated asset work. For visual or interactive changes, verify with `pnpm dev` or `pnpm preview` and include screenshots in the PR. Name future tests near the feature they cover, using the local file name as the stem.
 
+## Resume Integration
+
+- The résumé source remains in the separate `67-3d-resume` repository. Do not copy its React/Three.js source into Astro and do not use an iframe for the canonical `/resume/` route.
+- `pnpm build` builds the blog only. `pnpm build:with-resume` builds the résumé first, builds the blog, then mounts the verified résumé artifact at `dist/resume/`.
+- The local default résumé checkout is `../../play67/resume`; override it with `RESUME_SOURCE_DIR=/absolute/path/to/resume` on another machine or in CI.
+- A deployment build must use a clean résumé checkout. Set `RESUME_REQUIRE_CLEAN=1` and set `RESUME_REVISION` to the expected full commit SHA; the integration script fails if the checkout does not match.
+- `dist/` remains generated and untracked. Updating the résumé means advancing the reviewed revision and rebuilding; never hand-edit `dist/resume/`.
+
 ## Commit & Pull Request Guidelines
 
 Use Conventional Commits, matching the current history: `feat: ...`, `fix: ...`, and `chore: ...`. Keep commits and PRs focused on one concern. PRs should include a concise summary, linked issues when relevant, validation commands run, and screenshots for UI changes. Discuss major features or design changes in an issue or discussion before implementation.

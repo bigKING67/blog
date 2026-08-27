@@ -94,12 +94,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				external: true,
 				icon: "fa7-brands:github",
 			},
-			{
-				name: "博客仓库",
-				url: "https://github.com/bigKING67/blog",
-				external: true,
-				icon: "material-symbols:code",
-			},
+			LinkPresets.Resume,
 		],
 	});
 
@@ -120,6 +115,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		name: "主页",
 		url: "/",
 		icon: "material-symbols:home",
+	},
+	Resume: {
+		name: "简历",
+		url: "/resume/",
+		external: true,
+		icon: "material-symbols:badge-outline",
 	},
 	Dynamic: {
 		name: "动态",
