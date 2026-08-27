@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { readFile, rm, mkdir, mkdtemp } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,8 +8,7 @@ const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const BLOG_ROOT = resolve(SCRIPT_DIR, "..");
 const LOCK_PATH = resolve(BLOG_ROOT, "resume.lock.json");
 const EXPECTED_SCHEMA = "whois67.resume-source-lock.v1";
-const EXPECTED_REPOSITORY =
-	"https://github.com/bigKING67/67-3d-resume.git";
+const EXPECTED_REPOSITORY = "https://github.com/bigKING67/67-3d-resume.git";
 const REVISION_PATTERN = /^[0-9a-f]{40}$/;
 
 function run(command, args, { cwd, env = process.env } = {}) {
@@ -24,6 +23,14 @@ function run(command, args, { cwd, env = process.env } = {}) {
 			`${command} ${args.join(" ")} exited with status ${result.status}`,
 		);
 	}
+}
+
+function npmEnvironment(env = process.env) {
+	const sanitized = { ...env };
+	// pnpm needs this project bootstrap setting, but npm 11 rejects inherited
+	// pnpm-only config as an unknown environment option.
+	delete sanitized.npm_config_manage_package_manager_versions;
+	return sanitized;
 }
 
 function readOutput(command, args, cwd) {
@@ -87,6 +94,7 @@ try {
 
 	run(npmCommand, ["ci", "--include=dev"], {
 		cwd: resolve(resumeRoot, "web"),
+		env: npmEnvironment(),
 	});
 	run(pnpmCommand, ["run", "build:with-resume"], {
 		cwd: BLOG_ROOT,

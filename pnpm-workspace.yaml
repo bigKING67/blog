@@ -1,0 +1,12 @@
+packages:
+  - "."
+
+allowBuilds:
+  esbuild: true
+  workerd: true
+
+# @swup/astro 1.8.0 (current latest) still reaches a vulnerable release through
+# rollup-plugin-terser's build-only dependency. Keep this override narrow until
+# that upstream chain is updated.
+overrides:
+  "rollup-plugin-terser>serialize-javascript": "7.0.5"

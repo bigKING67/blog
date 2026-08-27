@@ -341,6 +341,11 @@ export default defineConfig({
 			},
 		},
 		build: {
+			// l2d-widget ships as one pre-bundled optional module (~665 kB). It is
+			// isolated from the other client code and is not referenced while the
+			// Live2D feature flag is disabled, so 700 kB is the honest single-chunk
+			// budget; any chunk beyond it remains a build warning.
+			chunkSizeWarningLimit: 700,
 			minify: "esbuild",
 			esbuildOptions: {
 				minify: true,
