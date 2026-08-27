@@ -29,9 +29,11 @@ There is no dedicated unit-test framework configured. Before submitting changes,
 
 - The résumé source remains in the separate `67-3d-resume` repository. Do not copy its React/Three.js source into Astro and do not use an iframe for the canonical `/resume/` route.
 - `pnpm build` builds the blog only. `pnpm build:with-resume` builds the résumé first, builds the blog, then mounts the verified résumé artifact at `dist/resume/`.
+- Cloudflare Pages must use `pnpm build:pages`. That command reads `resume.lock.json`, fetches the exact public résumé commit into a temporary checkout, installs its locked npm dependencies, and then runs the reproducible combined build. The Pages output directory is `dist`.
 - The local default résumé checkout is `../../play67/resume`; override it with `RESUME_SOURCE_DIR=/absolute/path/to/resume` on another machine or in CI.
 - A deployment build must use a clean résumé checkout. Set `RESUME_REQUIRE_CLEAN=1` and set `RESUME_REVISION` to the expected full commit SHA; the integration script fails if the checkout does not match.
-- `dist/` remains generated and untracked. Updating the résumé means advancing the reviewed revision and rebuilding; never hand-edit `dist/resume/`.
+- `resume.lock.json` is the deployment source of truth. After reviewing and pushing a résumé change, advance it to that full commit SHA in a dedicated blog change; a résumé-repository push alone does not trigger this blog's Git-connected Pages project.
+- `dist/` remains generated and untracked. Updating the résumé means advancing the reviewed lock and rebuilding; never hand-edit `dist/resume/`.
 
 ## Commit & Pull Request Guidelines
 

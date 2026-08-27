@@ -7,6 +7,7 @@
     "start": "astro dev",
     "check": "astro check",
     "build": "npx tsx scripts/generate-lqips.ts && astro build && npx tsx scripts/subset-fonts.ts && pagefind --site dist",
+    "build:pages": "node scripts/build-pages.mjs",
     "build:with-resume": "node scripts/build-with-resume.mjs",
     "embed:resume": "node scripts/embed-resume.mjs",
     "preview": "astro preview",
