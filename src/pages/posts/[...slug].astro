@@ -10,6 +10,7 @@ import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getRelatedPosts, getSortedPosts } from "@utils/content-utils";
 import {
+	getCategoryUrl,
 	getFileDirFromPath,
 	getPostUrlBySlug,
 	removeFileExtension,
@@ -28,6 +29,12 @@ import { siteConfig } from "@/config/siteConfig";
 import { sponsorConfig } from "@/config/sponsorConfig";
 import { formatDateToYYYYMMDD } from "@/utils/date-utils";
 import { getApiUrlList, processCoverImageSync } from "@/utils/image-utils";
+import { getAuthorAvatarUrl, toAbsoluteImageInfo } from "@/utils/schema-image";
+import {
+	buildBreadcrumbList,
+	buildPersonEntity,
+	toAbsoluteUrl,
+} from "@/utils/schema-utils";
 import { url } from "@/utils/url-utils";
 
 export async function getStaticPaths() {
@@ -86,22 +93,87 @@ const posterAvatarSelector = profileConfig.avatar
 
 dayjs.extend(utc);
 
+const coverBasePath = getFileDirFromPath(entry.filePath || "");
+const coverImage =
+	(await toAbsoluteImageInfo(
+		processedImage,
+		coverBasePath,
+		siteConfig.site_url,
+	)) ?? undefined;
+
+const authorUrl =
+	toAbsoluteUrl("/about/", siteConfig.site_url) ?? siteConfig.site_url;
+const sitePerson = buildPersonEntity({
+	site: siteConfig.site_url,
+	profileConfig,
+	authorUrl,
+	avatarUrl: await getAuthorAvatarUrl(),
+	description: profileConfig.bio,
+});
+const authorName = entry.data.author || profileConfig.name;
+const articleAuthor =
+	authorName === profileConfig.name
+		? { "@id": sitePerson["@id"] }
+		: { "@type": "Person", name: authorName };
+
+const breadcrumbItems = [
+	{
+		name: i18n(I18nKey.home),
+		url: toAbsoluteUrl("/", siteConfig.site_url) ?? siteConfig.site_url,
+	},
+];
+if (entry.data.category) {
+	breadcrumbItems.push({
+		name: entry.data.category,
+		url:
+			toAbsoluteUrl(getCategoryUrl(entry.data.category), siteConfig.site_url) ??
+			siteConfig.site_url,
+	});
+}
+breadcrumbItems.push({ name: entry.data.title, url: Astro.url.toString() });
+
 const jsonLd = {
 	"@context": "https://schema.org",
-	"@type": "BlogPosting",
-	headline: entry.data.title,
-	description: entry.data.description || entry.data.title,
-	keywords: entry.data.tags,
-	author: {
-		"@type": "Person",
-		name: profileConfig.name,
-		url: Astro.site,
-	},
-	datePublished: formatDateToYYYYMMDD(entry.data.published),
-	inLanguage: entry.data.lang
-		? entry.data.lang.replace("_", "-")
-		: siteConfig.lang.replace("_", "-"),
-	// TODO include cover image here
+	"@graph": [
+		{
+			"@type": "BlogPosting",
+			headline: entry.data.title,
+			description: entry.data.description || entry.data.title,
+			keywords:
+				entry.data.tags.length > 0 ? entry.data.tags.join(", ") : undefined,
+			author: articleAuthor,
+			publisher: { "@id": sitePerson["@id"] },
+			...(coverImage
+				? {
+						image: {
+							"@type": "ImageObject",
+							url: coverImage.url,
+							contentUrl: coverImage.url,
+							...(coverImage.width ? { width: coverImage.width } : {}),
+							...(coverImage.height ? { height: coverImage.height } : {}),
+						},
+					}
+				: {}),
+			datePublished: entry.data.published.toISOString(),
+			...(entry.data.updated
+				? { dateModified: entry.data.updated.toISOString() }
+				: {}),
+			...(entry.data.category ? { articleSection: entry.data.category } : {}),
+			...(remarkPluginFrontmatter.words
+				? { wordCount: remarkPluginFrontmatter.words }
+				: {}),
+			mainEntityOfPage: {
+				"@type": "WebPage",
+				"@id": Astro.url.toString(),
+			},
+			url: Astro.url.toString(),
+			inLanguage: entry.data.lang
+				? entry.data.lang.replace("_", "-")
+				: siteConfig.lang.replace("_", "-"),
+		},
+		sitePerson,
+		buildBreadcrumbList(breadcrumbItems),
+	],
 };
 
 const relatedPosts = await getRelatedPosts(entry, 5);
@@ -114,6 +186,7 @@ const relatedPosts = await getRelatedPosts(entry, 5);
   lang={entry.data.lang}
   setOGTypeArticle={true}
   postSlug={entry.id}
+  postCoverImage={coverImage?.url}
   postCategory={entry.data.category || undefined}
   headings={headings}
   encrypted={!!entry.data.password}
@@ -346,7 +419,7 @@ const relatedPosts = await getRelatedPosts(entry, 5);
                           <SharePoster
                             client:load
                             title={entry.data.title}
-                            author={profileConfig.name}
+                            author={entry.data.author || profileConfig.name}
                             description={entry.data.description || entry.data.title}
                             pubDate={formatDateToYYYYMMDD(entry.data.published)}
                             coverImage={posterCoverUrl}
@@ -436,7 +509,7 @@ const relatedPosts = await getRelatedPosts(entry, 5);
                           <SharePoster
                             client:load
                             title={entry.data.title}
-                            author={profileConfig.name}
+                            author={entry.data.author || profileConfig.name}
                             description={entry.data.description || entry.data.title}
                             pubDate={formatDateToYYYYMMDD(entry.data.published)}
                             coverImage={posterCoverUrl}

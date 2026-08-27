@@ -18,14 +18,7 @@ export const siteConfig: SiteConfig = {
 	description: "whois67 的个人博客，记录技术学习、项目折腾与日常思考。",
 
 	// 站点关键词
-	keywords: [
-		"whois67",
-		"bigKING67",
-		"博客",
-		"技术博客",
-		"个人博客",
-		"Astro",
-	],
+	keywords: ["whois67", "bigKING67", "博客", "技术博客", "个人博客", "Astro"],
 
 	// 主题色
 	themeColor: {

@@ -27,6 +27,8 @@ import {
 import { defaultFavicons } from "@/constants/icon";
 import type { Favicon } from "@/types/config";
 import { isHomePage } from "@/utils/layout-utils";
+import { getAuthorAvatarUrl } from "@/utils/schema-image";
+import { buildSiteGraph, toAbsoluteUrl } from "@/utils/schema-utils";
 import { url } from "@/utils/url-utils";
 
 import "@/styles/main.css";
@@ -41,9 +43,11 @@ interface Props {
 	lang?: string;
 	setOGTypeArticle?: boolean;
 	postSlug?: string;
+	postCoverImage?: string;
 }
 
-let { title, description, lang, setOGTypeArticle, postSlug } = Astro.props;
+let { title, description, lang, setOGTypeArticle, postSlug, postCoverImage } =
+	Astro.props;
 
 // apply a class to the body element to decide the height of the banner, only used for initial page load
 // Swup can update the body for each page visit, but it's after the page transition, causing a delay for banner height change
@@ -75,6 +79,8 @@ if (title) {
 let ogImageUrl: string | undefined;
 if (siteConfig.post.generateOgImages && postSlug) {
 	ogImageUrl = new URL(`/og/${postSlug}.png`, Astro.site).toString();
+} else if (postCoverImage) {
+	ogImageUrl = postCoverImage;
 }
 
 const favicons: Favicon[] =
@@ -85,6 +91,10 @@ if (!lang) {
 	lang = `${siteConfig.lang}`;
 }
 const siteLang = lang.replace("_", "-");
+
+const authorAvatarUrl = await getAuthorAvatarUrl();
+const authorUrl =
+	toAbsoluteUrl("/about/", siteConfig.site_url) ?? siteConfig.site_url;
 
 // 使用固定的banner偏移量，position配置用于图片定位
 ---
@@ -140,6 +150,7 @@ const siteLang = lang.replace("_", "-");
       content={description || siteConfig.description || pageTitle}
     />
     {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
     {
       setOGTypeArticle ? (
         <meta property="og:type" content="article" />
@@ -155,6 +166,25 @@ const siteLang = lang.replace("_", "-");
       name="twitter:description"
       content={description || siteConfig.description || pageTitle}
     />
+
+    {
+      isHomePageCheck && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(
+            buildSiteGraph({
+              site: siteConfig.site_url,
+              siteConfig,
+              profileConfig,
+              lang: siteLang,
+              authorUrl,
+              avatarUrl: authorAvatarUrl,
+            }),
+          )}
+        />
+      )
+    }
 
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
