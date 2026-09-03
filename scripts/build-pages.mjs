@@ -25,6 +25,15 @@ function run(command, args, { cwd, env = process.env } = {}) {
 	}
 }
 
+function runPnpm(args, options) {
+	const invokedCli = process.env.npm_execpath;
+	if (invokedCli) {
+		return run(process.execPath, [invokedCli, ...args], options);
+	}
+	const command = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
+	return run(command, args, options);
+}
+
 function npmEnvironment(env = process.env) {
 	const sanitized = { ...env };
 	// pnpm needs this project bootstrap setting, but npm 11 rejects inherited
@@ -63,7 +72,6 @@ async function readLock() {
 }
 
 const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
-const pnpmCommand = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
 let temporaryRoot;
 
 try {
@@ -96,7 +104,7 @@ try {
 		cwd: resolve(resumeRoot, "web"),
 		env: npmEnvironment(),
 	});
-	run(pnpmCommand, ["run", "build:with-resume"], {
+	runPnpm(["run", "build:with-resume"], {
 		cwd: BLOG_ROOT,
 		env: {
 			...process.env,

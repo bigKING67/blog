@@ -21,6 +21,15 @@ function run(command, args, cwd, env = process.env) {
 	}
 }
 
+function runPnpm(args, cwd) {
+	const invokedCli = process.env.npm_execpath;
+	if (invokedCli) {
+		return run(process.execPath, [invokedCli, ...args], cwd);
+	}
+	const command = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
+	return run(command, args, cwd);
+}
+
 function npmEnvironment(env = process.env) {
 	const sanitized = { ...env };
 	// Keep pnpm's package-manager bootstrap option out of child npm processes.
@@ -29,7 +38,6 @@ function npmEnvironment(env = process.env) {
 }
 
 const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
-const pnpmCommand = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
 
 try {
 	run(
@@ -38,7 +46,7 @@ try {
 		resolve(RESUME_ROOT, "web"),
 		npmEnvironment(),
 	);
-	run(pnpmCommand, ["run", "build"], BLOG_ROOT);
+	runPnpm(["run", "build"], BLOG_ROOT);
 	const receipt = await embedResume({ resumeRoot: RESUME_ROOT });
 	console.log(JSON.stringify(receipt, null, 2));
 } catch (error) {
