@@ -3,8 +3,8 @@ title: 从效率工具到生产力系统：我为什么做 Pi-67 Desktop
 published: 2026-09-04
 description: Pi-67 Desktop 不是另一个个人 AI 客户端。它试图以 Pi 为执行内核，用 Work × Chat 重构人和 Agent 的团队协作。
 tags: [Pi SDK, Pi-67 Desktop, AI Agent, 企业协作, AI Native]
-category: Way to AGI
-draft: true
+category: That tastes good
+draft: false
 pinned: false
 comment: true
 ---
