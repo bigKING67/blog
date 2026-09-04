@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Pi-67 Desktop：从本地 Work 到团队 Chat",
+    "locale": "zh-CN",
+    "animation": "none",
+    "quality_profile": "showcase",
+    "viewBox": [1200, 720]
+  },
+  "components": [
+    {
+      "id": "workspace",
+      "type": "frontend",
+      "label": "Local Workspace",
+      "sublabel": "仓库 · 会话 · 变更",
+      "tag": "local-first",
+      "pos": [70, 90],
+      "size": [180, 72]
+    },
+    {
+      "id": "piRuntime",
+      "type": "backend",
+      "label": "Pi SDK Agent Runtime",
+      "sublabel": "Session · Tool · 状态",
+      "tag": "唯一 Runtime",
+      "pos": [70, 270],
+      "size": [180, 72]
+    },
+    {
+      "id": "localComputer",
+      "type": "external",
+      "label": "本地 Computer",
+      "sublabel": "文件 · 终端 · 浏览器",
+      "tag": "真实环境",
+      "pos": [70, 450],
+      "size": [180, 72]
+    },
+    {
+      "id": "taskHandoff",
+      "type": "messagebus",
+      "label": "Task / Handoff",
+      "sublabel": "目标 · 分工 · 上下文",
+      "tag": "受治理交接",
+      "pos": [510, 180],
+      "size": [180, 72]
+    },
+    {
+      "id": "resultReceipt",
+      "type": "database",
+      "label": "状态与结果回执",
+      "sublabel": "过程 · 证据 · 结果",
+      "tag": "可复核",
+      "pos": [510, 420],
+      "size": [180, 72]
+    },
+    {
+      "id": "humanAgentTeam",
+      "type": "external",
+      "label": "人类与 Agent 团队",
+      "sublabel": "身份 · 角色 · 专长",
+      "tag": "共同参与",
+      "pos": [950, 90],
+      "size": [180, 72]
+    },
+    {
+      "id": "chatSpace",
+      "type": "frontend",
+      "label": "Channel / Thread / DM",
+      "sublabel": "讨论 · @提及 · 评审",
+      "tag": "共享协作空间",
+      "pos": [950, 270],
+      "size": [180, 72]
+    },
+    {
+      "id": "privateMemory",
+      "type": "database",
+      "label": "私人 Memory",
+      "sublabel": "个人 · Workspace",
+      "tag": "默认私有",
+      "pos": [70, 590],
+      "size": [180, 72]
+    },
+    {
+      "id": "agentGovernance",
+      "type": "security",
+      "label": "Agent Governance",
+      "sublabel": "身份 · 权限 · 审核 · 审计",
+      "tag": "组织边界",
+      "pos": [510, 590],
+      "size": [180, 72]
+    },
+    {
+      "id": "sharedExperience",
+      "type": "database",
+      "label": "共享 Experience / SOP",
+      "sublabel": "版本 · 范围 · 撤销",
+      "tag": "审核后共享",
+      "pos": [950, 590],
+      "size": [180, 72]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Work · 本地执行面",
+      "wraps": ["workspace", "piRuntime", "localComputer"],
+      "pad": 20
+    },
+    {
+      "kind": "region",
+      "label": "受治理的协作桥梁",
+      "wraps": ["taskHandoff", "resultReceipt"],
+      "pad": 20
+    },
+    {
+      "kind": "region",
+      "label": "Chat · 团队协作面",
+      "wraps": ["humanAgentTeam", "chatSpace"],
+      "pad": 20
+    },
+    {
+      "kind": "security-group",
+      "label": "组织智能与治理",
+      "wraps": ["privateMemory", "agentGovernance", "sharedExperience"],
+      "pad": 18
+    }
+  ],
+  "connections": [
+    {
+      "id": "teamJoinsChat",
+      "from": "humanAgentTeam",
+      "to": "chatSpace",
+      "label": "共同参与",
+      "variant": "emphasis",
+      "labelDy": 24
+    },
+    {
+      "id": "chatCreatesTask",
+      "from": "chatSpace",
+      "to": "taskHandoff",
+      "label": "目标与分工",
+      "variant": "emphasis"
+    },
+    {
+      "id": "taskBindsWorkspace",
+      "from": "taskHandoff",
+      "to": "workspace",
+      "label": "绑定执行环境",
+      "variant": "emphasis"
+    },
+    {
+      "id": "workspaceStartsRuntime",
+      "from": "workspace",
+      "to": "piRuntime",
+      "label": "启动任务",
+      "variant": "emphasis",
+      "labelDy": 24
+    },
+    {
+      "id": "runtimeUsesComputer",
+      "from": "piRuntime",
+      "to": "localComputer",
+      "label": "调用工具",
+      "variant": "emphasis",
+      "labelDy": 24
+    },
+    {
+      "id": "computerReturnsReceipt",
+      "from": "localComputer",
+      "to": "resultReceipt",
+      "label": "返回执行结果",
+      "variant": "emphasis"
+    },
+    {
+      "id": "receiptReturnsToChat",
+      "from": "resultReceipt",
+      "to": "chatSpace",
+      "label": "同步状态与证据",
+      "variant": "emphasis"
+    },
+    {
+      "id": "privateRecall",
+      "from": "privateMemory",
+      "to": "piRuntime",
+      "label": "当前任务召回",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "left",
+      "labelAt": [46, 536]
+    },
+    {
+      "id": "memoryToGovernance",
+      "from": "privateMemory",
+      "to": "agentGovernance",
+      "label": "去敏与复核",
+      "variant": "security"
+    },
+    {
+      "id": "governedPublication",
+      "from": "agentGovernance",
+      "to": "sharedExperience",
+      "label": "审核后发布",
+      "variant": "security"
+    },
+    {
+      "id": "sharedKnowledgeToChat",
+      "from": "sharedExperience",
+      "to": "chatSpace",
+      "label": "团队经验",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Work",
+      "items": [
+        "在用户自己的机器与 Workspace 中执行",
+        "保留 Pi Session、工具过程与真实结果"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Bridge",
+      "items": [
+        "任务、上下文、状态和回执贯通两侧",
+        "身份、权限与审计约束每一次交接"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Chat",
+      "items": [
+        "人和 Agent 在同一协作空间分工与评审",
+        "共享的是审核后的经验，不是私人会话原文"
+      ]
+    }
+  ]
+}
