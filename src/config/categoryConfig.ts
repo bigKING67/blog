@@ -4,6 +4,7 @@
  */
 export const POST_CATEGORIES = [
 	"Talk is cheap", // 碎碎念、随笔、建站记录
+	"That tastes good", // 产品、设计、审美与品味
 	"Action speaks louder", // 动手实践、项目、教程
 	"Way to AGI", // AI / 算法 / 学习路径
 	"You gotta eat", // 吃喝、生活烟火
