@@ -14,4 +14,4 @@ pinned: false
 
 P.S. 我们的 Groland（Women's Groland）开放入境，二维码见图。
 
-![Women's Groland 微信群聊二维码，2026 年 9 月 18 日前有效](/images/dynamic/2026-09-11-groland.jpg)
+![Women's Groland 微信群聊二维码，2026 年 9 月 18 日前有效](/images/dynamic/2026-09-11-groland.jpg?v=2)
