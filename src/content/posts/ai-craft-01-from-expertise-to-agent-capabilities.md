@@ -174,6 +174,8 @@ Darwin Gödel Machine 让 Agent 迭代修改自身代码，通过编程任务评
 - [Money Craft](/posts/ai-craft-07-money-craft-research-evidence/)
 - [Reverse Craft](/posts/ai-craft-08-reverse-craft-reproducible-evidence/)
 
+案例补篇：[测试全绿之后，我继续验证 Review Craft](/posts/ai-craft-09-review-craft-source-identity-case/)。它记录真实源码上的缺陷研究、环境误判、修复和独立复核，补充说明工程验证怎样被反例推进；这些结果尚不构成 RSI 收益证明。
+
 具备实验结果后，我会再单独记录自我改进研究。
 
 我希望读者最终能顺着文章回到源码，理解一次判断为什么这样产生，某条约束解决了什么问题，以及下一项改动准备怎样证明价值。这也是我继续建设 AI Craft 的工作标准。
