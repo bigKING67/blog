@@ -3,7 +3,7 @@ import type { CommentConfig } from "../types/commentConfig";
 export const commentConfig: CommentConfig = {
 	// 评论系统类型: none, twikoo, waline, giscus, disqus, artalk
 	// 使用 Waline：支持匿名访客留言（昵称+邮箱即可），无需 GitHub 登录
-	// 部署后把下方 serverURL 换成你自己的 Waline 服务地址
+	// 使用站点已有的公开后端；环境变量可覆盖不同环境的地址
 	type: "waline",
 
 	//twikoo评论系统配置
@@ -26,7 +26,7 @@ export const commentConfig: CommentConfig = {
 	// 文档：https://waline.js.org/guide/get-started.html
 	// serverURL 优先读环境变量 WALINE_SERVER_URL（见 Waline.astro）
 	waline: {
-		serverURL: "",
+		serverURL: "https://waline.52671314.xyz/",
 		lang: "zh-CN",
 		emoji: [
 			"https://unpkg.com/@waline/emojis@1.4.0/weibo",
