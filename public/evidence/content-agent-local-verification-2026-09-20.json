@@ -1,0 +1,92 @@
+{
+  "schema": "whois67.content-production-evidence-summary.v1",
+  "verified_on": "2026-09-20",
+  "kind": "editorial_summary_of_existing_local_artifacts",
+  "scope": "Existing files and original receipt hashes rechecked; metadata inspected with ffprobe. End-to-end tests were not rerun for this article. This is not an original execution receipt.",
+  "samples": [
+    {
+      "sample": "two-cut-export",
+      "original_receipt_status": "completed",
+      "engine": "@hyperframes/producer",
+      "bytes": 3014460,
+      "output_sha256": "f8bbc98c3c8bdca9772553c897a3beb8e551563619843214459875fdacf78e3c",
+      "hash_matches_original_receipt": true,
+      "receipt_output": {
+        "sha256": "f8bbc98c3c8bdca9772553c897a3beb8e551563619843214459875fdacf78e3c",
+        "duration": 6,
+        "video": true,
+        "audio": true,
+        "width": 720,
+        "height": 1280
+      },
+      "local_ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 720,
+            "height": 1280
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    },
+    {
+      "sample": "http-worker-export",
+      "original_receipt_status": "completed",
+      "engine": "@hyperframes/producer",
+      "bytes": 275982,
+      "output_sha256": "f72b12ee9fc5f65a8f12ac6141b0a42d777193462845cd63ed87287f972443b2",
+      "hash_matches_original_receipt": true,
+      "receipt_output": {
+        "audio": true,
+        "duration": 2,
+        "height": 640,
+        "sha256": "f72b12ee9fc5f65a8f12ac6141b0a42d777193462845cd63ed87287f972443b2",
+        "video": true,
+        "width": 360
+      },
+      "local_ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 360,
+            "height": 640
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "2.000000"
+        }
+      }
+    }
+  ],
+  "historical_test_context": {
+    "object_service": "loopback TLS/SigV4 fixture, not cloud TOS",
+    "model_quality": "not established; some planning/semantic tests use simulated responses"
+  },
+  "not_verified": [
+    "fresh end-to-end execution",
+    "subjective audiovisual quality",
+    "cloud storage operation",
+    "real model creative quality",
+    "platform publishing or ad spend",
+    "business uplift",
+    "daily capacity or sustained autonomy"
+  ],
+  "publication_limits": "Source footage, output videos, internal identifiers, service addresses and credentials are omitted. The public summary is not sufficient to independently reproduce private media tests."
+}
