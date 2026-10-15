@@ -6,12 +6,12 @@ firstSeen: 2026-10-14
 updated: 2026-10-15
 status: research
 tags: [ai-os, multi-agent, knowledge-graph, self-hosted]
-officialUrl: https://studio.automatos.app/
-githubUrl: https://github.com/AutomatosAI/automatos-ai
+officialUrl: ""
+githubUrl: "https://github.com/AutomatosAI/automatos-ai"
 paperUrl: ""
 relevancePi67: 84
 relevanceAios: 97
-maturity: 74
+maturity: 55
 related: []
 timeline:
   - date: 2026-10-14
@@ -22,9 +22,13 @@ timeline:
     title: 纳入 AI Radar 首批种子实体
     summary: 重点观察 Runtime Adapter、Task、Knowledge 与企业化能力。
     status: research
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方站点、官方 GitHub 或官方文档确认该实体真实存在，并补充长期可追溯来源。
+    status: research
 sources:
-  - title: Automatos AI GitHub
-    url: https://github.com/AutomatosAI/automatos-ai
+  - title: "Automatos AI GitHub"
+    url: "https://github.com/AutomatosAI/automatos-ai"
 ---
 
 ## 当前判断
