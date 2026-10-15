@@ -7,11 +7,11 @@ updated: 2026-10-15
 status: test
 tags: [agent-runtime, sandbox, security, cross-platform]
 officialUrl: ""
-githubUrl: https://github.com/microsoft/mxc
+githubUrl: "https://github.com/microsoft/mxc"
 paperUrl: ""
 relevancePi67: 97
 relevanceAios: 94
-maturity: 82
+maturity: 75
 related: []
 timeline:
   - date: 2026-10-08
@@ -22,9 +22,13 @@ timeline:
     title: 纳入 AI Radar 首批种子实体
     summary: 维持 TEST，优先验证 Windows 与 macOS 端的执行边界。
     status: test
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方站点、官方 GitHub 或官方文档确认该实体真实存在，并补充长期可追溯来源。
+    status: test
 sources:
-  - title: Microsoft MXC GitHub
-    url: https://github.com/microsoft/mxc
+  - title: "Microsoft MXC GitHub"
+    url: "https://github.com/microsoft/mxc"
 ---
 
 ## 当前判断
