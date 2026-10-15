@@ -1,97 +1,97 @@
 [
-  {
-    "id": "pi-67-context-memory",
-    "label": "pi-67 Context & Memory",
-    "kind": "system"
-  },
-  {
-    "id": "pi-67-context-engine",
-    "label": "pi-67 Context Engine",
-    "kind": "system"
-  },
-  {
-    "id": "pi-67-runtime-security",
-    "label": "pi-67 Runtime Security",
-    "kind": "system"
-  },
-  {
-    "id": "pi-67-computer-use",
-    "label": "pi-67 Computer Use",
-    "kind": "system"
-  },
-  {
-    "id": "pi-67-browser-runtime",
-    "label": "pi-67 Browser Runtime",
-    "kind": "system"
-  },
-  {
-    "id": "pi-67-runtime",
-    "label": "pi-67 Runtime",
-    "kind": "system"
-  },
-  {
-    "id": "pi-67-local-agent",
-    "label": "pi-67 Local Agent",
-    "kind": "system"
-  },
-  {
-    "id": "pi-67-deep-research",
-    "label": "pi-67 Deep Research",
-    "kind": "system"
-  },
-  {
-    "id": "pi-67-evaluation",
-    "label": "pi-67 Evaluation",
-    "kind": "system"
-  },
-  {
-    "id": "aios-decision-plane",
-    "label": "AIOS Decision Plane",
-    "kind": "system"
-  },
-  {
-    "id": "aios-team-collaboration",
-    "label": "AIOS Team Collaboration",
-    "kind": "system"
-  },
-  {
-    "id": "aios-agent-platform",
-    "label": "AIOS Agent Platform",
-    "kind": "system"
-  },
-  {
-    "id": "aios-agent-workspace",
-    "label": "AIOS Agent Workspace",
-    "kind": "system"
-  },
-  {
-    "id": "aios-multimodal-rag",
-    "label": "AIOS Multimodal RAG",
-    "kind": "system"
-  },
-  {
-    "id": "aios-video-rag",
-    "label": "AIOS Video RAG",
-    "kind": "system"
-  },
-  {
-    "id": "aios-visual-memory",
-    "label": "AIOS Visual Memory",
-    "kind": "system"
-  },
-  {
-    "id": "aios-creative-engine",
-    "label": "AIOS Creative Engine",
-    "kind": "system"
-  },
-  {
-    "id": "aios-document-pipeline",
-    "label": "AIOS Document Pipeline",
-    "kind": "system"
-  },
-  {
-    "id": "review-craft-evaluation",
-    "label": "review-craft Evaluation",
-    "kind": "system"
-  }
+	{
+		"id": "pi-67-context-memory",
+		"label": "pi-67 Context & Memory",
+		"kind": "system"
+	},
+	{
+		"id": "pi-67-context-engine",
+		"label": "pi-67 Context Engine",
+		"kind": "system"
+	},
+	{
+		"id": "pi-67-runtime-security",
+		"label": "pi-67 Runtime Security",
+		"kind": "system"
+	},
+	{
+		"id": "pi-67-computer-use",
+		"label": "pi-67 Computer Use",
+		"kind": "system"
+	},
+	{
+		"id": "pi-67-browser-runtime",
+		"label": "pi-67 Browser Runtime",
+		"kind": "system"
+	},
+	{
+		"id": "pi-67-runtime",
+		"label": "pi-67 Runtime",
+		"kind": "system"
+	},
+	{
+		"id": "pi-67-local-agent",
+		"label": "pi-67 Local Agent",
+		"kind": "system"
+	},
+	{
+		"id": "pi-67-deep-research",
+		"label": "pi-67 Deep Research",
+		"kind": "system"
+	},
+	{
+		"id": "pi-67-evaluation",
+		"label": "pi-67 Evaluation",
+		"kind": "system"
+	},
+	{
+		"id": "aios-decision-plane",
+		"label": "AIOS Decision Plane",
+		"kind": "system"
+	},
+	{
+		"id": "aios-team-collaboration",
+		"label": "AIOS Team Collaboration",
+		"kind": "system"
+	},
+	{
+		"id": "aios-agent-platform",
+		"label": "AIOS Agent Platform",
+		"kind": "system"
+	},
+	{
+		"id": "aios-agent-workspace",
+		"label": "AIOS Agent Workspace",
+		"kind": "system"
+	},
+	{
+		"id": "aios-multimodal-rag",
+		"label": "AIOS Multimodal RAG",
+		"kind": "system"
+	},
+	{
+		"id": "aios-video-rag",
+		"label": "AIOS Video RAG",
+		"kind": "system"
+	},
+	{
+		"id": "aios-visual-memory",
+		"label": "AIOS Visual Memory",
+		"kind": "system"
+	},
+	{
+		"id": "aios-creative-engine",
+		"label": "AIOS Creative Engine",
+		"kind": "system"
+	},
+	{
+		"id": "aios-document-pipeline",
+		"label": "AIOS Document Pipeline",
+		"kind": "system"
+	},
+	{
+		"id": "review-craft-evaluation",
+		"label": "review-craft Evaluation",
+		"kind": "system"
+	}
 ]
