@@ -6,12 +6,12 @@ firstSeen: 2026-10-10
 updated: 2026-10-15
 status: test
 tags: [browser-agent, operational-memory, web-automation]
-officialUrl: https://webcmd.dev/
-githubUrl: https://github.com/agentrhq/webcmd
+officialUrl: "https://webcmd.dev/"
+githubUrl: "https://github.com/agentrhq/webcmd"
 paperUrl: ""
 relevancePi67: 93
 relevanceAios: 85
-maturity: 76
+maturity: 70
 related: []
 timeline:
   - date: 2026-10-10
@@ -22,9 +22,15 @@ timeline:
     title: 纳入 AI Radar 首批种子实体
     summary: 维持 TEST，重点验证重复网站任务中的成本与可靠性。
     status: test
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方站点、官方 GitHub 或官方文档确认该实体真实存在，并补充长期可追溯来源。
+    status: test
 sources:
-  - title: Webcmd GitHub
-    url: https://github.com/agentrhq/webcmd
+  - title: "Webcmd GitHub"
+    url: "https://github.com/agentrhq/webcmd"
+  - title: "Webcmd website"
+    url: "https://webcmd.dev/"
 ---
 
 ## 当前判断
