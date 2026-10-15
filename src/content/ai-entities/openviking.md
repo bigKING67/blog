@@ -6,8 +6,8 @@ firstSeen: 2026-07-23
 updated: 2026-10-15
 status: research
 tags: [agent-memory, context-engineering, context-database]
-officialUrl: https://openviking.ai/
-githubUrl: https://github.com/volcengine/OpenViking
+officialUrl: "https://openviking.ai/"
+githubUrl: "https://github.com/volcengine/OpenViking"
 paperUrl: ""
 relevancePi67: 96
 relevanceAios: 84
@@ -22,9 +22,17 @@ timeline:
     title: 纳入 AI Radar 首批种子实体
     summary: 继续作为 Context / Memory 基础设施的重要候选。
     status: research
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方站点、官方 GitHub 或官方文档确认该实体真实存在，并补充长期可追溯来源。
+    status: research
 sources:
-  - title: OpenViking GitHub
-    url: https://github.com/volcengine/OpenViking
+  - title: "OpenViking official site"
+    url: "https://openviking.ai/"
+  - title: "OpenViking GitHub"
+    url: "https://github.com/volcengine/OpenViking"
+  - title: "OpenViking documentation"
+    url: "https://docs.openviking.ai/"
 ---
 
 ## 当前判断

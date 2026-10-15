@@ -8,17 +8,23 @@ status: research
 tags: [context-engineering, harness, self-evolving]
 officialUrl: ""
 githubUrl: ""
-paperUrl: ""
+paperUrl: "https://arxiv.org/abs/2609.34649"
 relevancePi67: 97
 relevanceAios: 86
-maturity: 0
+maturity: 45
 related: []
 timeline:
   - date: 2026-09-30
     title: 首次进入 AI 简报 / 技术研究
     summary: 历史提及记录已从此前简报回填到 AI Radar；后续更新时应重新核验一手来源与成熟度。
     status: research
-sources: []
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过 arXiv 原始论文与公开代码（如有）确认该研究真实存在；成熟度按“研究/原型”阶段评分。
+    status: research
+sources:
+  - title: "ContextEvo paper"
+    url: "https://arxiv.org/abs/2609.34649"
 ---
 
 ## 历史导入说明

@@ -6,12 +6,12 @@ firstSeen: 2026-10-09
 updated: 2026-10-15
 status: research
 tags: [multi-agent, collaboration, task-management, agent-platform]
-officialUrl: https://paperclip.ing/
-githubUrl: https://github.com/paperclipai/paperclip
+officialUrl: "https://paperclip.ing/"
+githubUrl: "https://github.com/paperclipai/paperclip"
 paperUrl: ""
 relevancePi67: 88
 relevanceAios: 96
-maturity: 78
+maturity: 90
 related: []
 timeline:
   - date: 2026-10-09
@@ -22,9 +22,15 @@ timeline:
     title: 纳入 AI Radar 首批种子实体
     summary: 继续作为 AIOS Human-Agent Collaboration 的重要参考。
     status: research
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方站点、官方 GitHub 或官方文档确认该实体真实存在，并补充长期可追溯来源。
+    status: research
 sources:
-  - title: Paperclip GitHub
-    url: https://github.com/paperclipai/paperclip
+  - title: "Paperclip GitHub"
+    url: "https://github.com/paperclipai/paperclip"
+  - title: "Paperclip website"
+    url: "https://paperclip.ing/"
 ---
 
 ## 当前判断

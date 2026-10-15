@@ -34,6 +34,20 @@ Terminal/alternative states:
 
 A status change should be explained in the entity timeline.
 
+## Maturity rubric
+
+`maturity` is an internal engineering-readiness score, not a model-quality leaderboard.
+
+- `1–39` — concept / very early research
+- `40–59` — research prototype / early open-source project
+- `60–79` — actively developed and realistically testable
+- `80–89` — mature enough for serious production evaluation
+- `90–100` — strong production/community evidence; still not an automatic ADOPT decision
+
+`0` is reserved for temporary historical imports that have not yet been source-verified. CI rejects maturity 0 once an entity enters the maintained knowledge base.
+
+Every maintained entity must include at least one primary or directly attributable source. A source confirms the existence or specific claim; it does not make vendor benchmarks independently verified.
+
 ## Pull request policy
 
 Automated intelligence updates must:

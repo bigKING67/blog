@@ -6,19 +6,29 @@ firstSeen: 2026-10-01
 updated: 2026-10-15
 status: watch
 tags: [agent-memory, continual-learning, retrieval]
-officialUrl: ""
-githubUrl: ""
+officialUrl: "https://hindsight.vectorize.io/"
+githubUrl: "https://github.com/vectorize-io/hindsight"
 paperUrl: ""
 relevancePi67: 94
 relevanceAios: 82
-maturity: 0
+maturity: 85
 related: []
 timeline:
   - date: 2026-10-01
     title: 首次进入 AI 简报 / 技术研究
     summary: 历史提及记录已从此前简报回填到 AI Radar；后续更新时应重新核验一手来源与成熟度。
     status: watch
-sources: []
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方站点、官方 GitHub 或官方文档确认该实体真实存在，并补充长期可追溯来源。
+    status: watch
+sources:
+  - title: "Hindsight documentation"
+    url: "https://hindsight.vectorize.io/"
+  - title: "Hindsight GitHub"
+    url: "https://github.com/vectorize-io/hindsight"
+  - title: "Vectorize Hindsight overview"
+    url: "https://vectorize.io/product"
 ---
 
 ## 历史导入说明

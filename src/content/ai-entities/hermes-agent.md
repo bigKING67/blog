@@ -6,19 +6,27 @@ firstSeen: 2026-10-08
 updated: 2026-10-15
 status: research
 tags: [agent, memory, skills, gateway]
-officialUrl: ""
-githubUrl: ""
+officialUrl: "https://hermes-agent.nousresearch.com/"
+githubUrl: "https://github.com/NousResearch/hermes-agent"
 paperUrl: ""
 relevancePi67: 93
 relevanceAios: 89
-maturity: 0
+maturity: 90
 related: []
 timeline:
   - date: 2026-10-08
     title: 首次进入 AI 简报 / 技术研究
     summary: 历史提及记录已从此前简报回填到 AI Radar；后续更新时应重新核验一手来源与成熟度。
     status: research
-sources: []
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方站点、官方 GitHub 或官方文档确认该实体真实存在，并补充长期可追溯来源。
+    status: research
+sources:
+  - title: "Hermes Agent official site"
+    url: "https://hermes-agent.nousresearch.com/"
+  - title: "Hermes Agent GitHub"
+    url: "https://github.com/NousResearch/hermes-agent"
 ---
 
 ## 历史导入说明
