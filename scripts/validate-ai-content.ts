@@ -45,6 +45,16 @@ for (const file of briefFiles) {
 
 for (const file of entityFiles) {
 	const parsed = matter(await readFile(file, "utf8"));
+	const sources = Array.isArray(parsed.data.sources) ? parsed.data.sources : [];
+	const maturity = Number(parsed.data.maturity ?? 0);
+
+	if (sources.length === 0) {
+		errors.push(`${file}: must contain at least one primary/source reference`);
+	}
+	if (!Number.isFinite(maturity) || maturity <= 0) {
+		errors.push(`${file}: maturity must be greater than 0 after source verification`);
+	}
+
 	const related = Array.isArray(parsed.data.related) ? parsed.data.related : [];
 	for (const ref of related) {
 		if (!knownIds.has(String(ref))) {
