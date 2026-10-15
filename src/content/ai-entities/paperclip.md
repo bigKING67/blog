@@ -2,7 +2,7 @@
 name: Paperclip
 kind: project
 summary: 面向团队 AI Agent 的开源编排与工作管理平台，关注任务、技能、权限、历史与多 Agent 协作。
-firstSeen: 2026-10-15
+firstSeen: 2026-10-09
 updated: 2026-10-15
 status: research
 tags: [multi-agent, collaboration, task-management, agent-platform]
@@ -13,6 +13,15 @@ relevancePi67: 88
 relevanceAios: 96
 maturity: 78
 related: []
+timeline:
+  - date: 2026-10-09
+    title: 首次进入 AI 简报
+    summary: 因 Chat → Task → Agent → Deliverable 的团队协作闭环进入研究范围。
+    status: research
+  - date: 2026-10-15
+    title: 纳入 AI Radar 首批种子实体
+    summary: 继续作为 AIOS Human-Agent Collaboration 的重要参考。
+    status: research
 sources:
   - title: Paperclip GitHub
     url: https://github.com/paperclipai/paperclip
