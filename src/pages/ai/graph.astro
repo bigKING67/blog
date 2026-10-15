@@ -1,0 +1,159 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { removeFileExtension, url } from "@/utils/url-utils";
+import relations from "@/data/ai/relations.json";
+
+const entities = await getCollection("aiEntities");
+const entityMap = new Map(
+	entities.map((entry) => [
+		removeFileExtension(entry.id),
+		{
+			name: entry.data.name,
+			status: entry.data.status,
+			kind: entry.data.kind,
+			url: url(`/ai/projects/${removeFileExtension(entry.id)}/`),
+		},
+	]),
+);
+
+const ids = [...new Set(relations.flatMap((edge) => [edge.source, edge.target]))];
+const width = 960;
+const height = 620;
+const centerX = width / 2;
+const centerY = height / 2;
+const radiusX = 360;
+const radiusY = 235;
+
+const nodes = ids.map((id, index) => {
+	const angle = (Math.PI * 2 * index) / Math.max(ids.length, 1) - Math.PI / 2;
+	const known = entityMap.get(id);
+	return {
+		id,
+		x: centerX + Math.cos(angle) * radiusX,
+		y: centerY + Math.sin(angle) * radiusY,
+		name: known?.name ?? id.replaceAll("-", " "),
+		status: known?.status ?? "context",
+		kind: known?.kind ?? "system",
+		url: known?.url ?? "",
+	};
+});
+const nodeMap = new Map(nodes.map((node) => [node.id, node]));
+---
+
+<MainGridLayout
+	title="AI Knowledge Graph"
+	description="AI Radar 中项目、模型与 pi-67 / AIOS 方向之间的关系网络。"
+>
+	<section class="card-base px-7 py-6 mb-4">
+		<div class="flex flex-wrap items-center justify-between gap-3">
+			<div>
+				<div class="text-sm text-(--primary) font-semibold mb-1">AI RADAR</div>
+				<h1 class="text-2xl font-bold text-90">Knowledge Graph</h1>
+				<p class="text-sm text-50 mt-2">
+					第一版采用 Git 中的显式关系边，不依赖 Neo4j。点击已收录实体可进入详情页。
+				</p>
+			</div>
+			<a href={url("/ai/")} class="btn-plain px-4 py-2 rounded-lg">返回 Radar</a>
+		</div>
+	</section>
+
+	<section class="card-base p-4 md:p-6 mb-4 overflow-x-auto" data-pagefind-ignore>
+		<svg
+			viewBox={`0 0 ${width} ${height}`}
+			class="min-w-[760px] w-full h-auto"
+			role="img"
+			aria-label="AI Radar knowledge graph"
+		>
+			<defs>
+				<marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+					<path d="M0,0 L8,4 L0,8 Z" fill="currentColor"></path>
+				</marker>
+			</defs>
+
+			{relations.map((edge) => {
+				const source = nodeMap.get(edge.source);
+				const target = nodeMap.get(edge.target);
+				if (!source || !target) return null;
+				const mx = (source.x + target.x) / 2;
+				const my = (source.y + target.y) / 2;
+				return (
+					<g class="text-black/20 dark:text-white/25">
+						<line
+							x1={source.x}
+							y1={source.y}
+							x2={target.x}
+							y2={target.y}
+							stroke="currentColor"
+							stroke-width="1.5"
+							marker-end="url(#arrow)"
+						/>
+						<text
+							x={mx}
+							y={my - 5}
+							text-anchor="middle"
+							class="fill-black/40 dark:fill-white/40 text-[11px]"
+						>
+							{edge.relation}
+						</text>
+					</g>
+				);
+			})}
+
+			{nodes.map((node) => (
+				<a href={node.url || "#"} aria-disabled={!node.url}>
+					<g>
+						<circle
+							cx={node.x}
+							cy={node.y}
+							r="34"
+							class:list={[
+								"stroke-2",
+								node.url
+									? "fill-(--primary)/10 stroke-(--primary)"
+									: "fill-black/3 dark:fill-white/5 stroke-black/10 dark:stroke-white/15",
+							]}
+						/>
+						<text
+							x={node.x}
+							y={node.y - 3}
+							text-anchor="middle"
+							class="fill-black/80 dark:fill-white/80 text-[12px] font-semibold"
+						>
+							{node.name.length > 18 ? `${node.name.slice(0, 16)}…` : node.name}
+						</text>
+						<text
+							x={node.x}
+							y={node.y + 14}
+							text-anchor="middle"
+							class="fill-black/35 dark:fill-white/35 text-[9px] uppercase"
+						>
+							{node.status}
+						</text>
+					</g>
+				</a>
+			))}
+		</svg>
+	</section>
+
+	<section class="card-base p-6">
+		<div class="flex items-center gap-2 mb-4">
+			<Icon name="material-symbols:hub-outline" class="text-xl text-(--primary)" />
+			<h2 class="font-bold text-90">Relations</h2>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+			{relations.map((edge) => (
+				<div class="rounded-xl border border-black/5 dark:border-white/10 p-4">
+					<div class="text-sm font-semibold text-75">
+						{entityMap.get(edge.source)?.name ?? edge.source}
+					</div>
+					<div class="text-xs text-(--primary) my-1">— {edge.relation} →</div>
+					<div class="text-sm text-50">
+						{entityMap.get(edge.target)?.name ?? edge.target}
+					</div>
+				</div>
+			))}
+		</div>
+	</section>
+</MainGridLayout>

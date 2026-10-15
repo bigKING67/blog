@@ -1,0 +1,98 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { removeFileExtension, url } from "@/utils/url-utils";
+
+const entities = (await getCollection("aiEntities")).sort(
+	(a, b) => b.data.updated.getTime() - a.data.updated.getTime(),
+);
+const entityUrl = (id: string) =>
+	url(`/ai/projects/${removeFileExtension(id)}/`);
+---
+
+<MainGridLayout title="AI Knowledge Base" description="AI Radar 持续维护的项目、模型、论文与工程基础设施。">
+	<div class="card-base px-7 py-6 mb-4">
+		<div class="flex flex-wrap items-center justify-between gap-3">
+			<div>
+				<div class="text-sm text-(--primary) font-semibold mb-1">AI RADAR</div>
+				<h1 class="text-2xl font-bold text-90">Knowledge Base</h1>
+				<p class="text-sm text-50 mt-2">共 {entities.length} 个持续维护的公开知识实体。</p>
+			</div>
+			<a href={url("/ai/")} class="btn-plain px-4 py-2 rounded-lg">返回 Radar</a>
+		</div>
+	</div>
+
+	<div class="card-base p-4 mb-4">
+		<div class="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-3">
+			<input id="ai-search" type="search" placeholder="搜索项目、标签、摘要…" class="w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2 outline-none focus:border-(--primary)" />
+			<select id="ai-kind" class="rounded-lg border border-black/10 dark:border-white/10 bg-(--card-bg) px-3 py-2">
+				<option value="">全部类型</option>
+				{[...new Set(entities.map((e) => e.data.kind))].sort().map((kind) => <option value={kind}>{kind}</option>)}
+			</select>
+			<select id="ai-status" class="rounded-lg border border-black/10 dark:border-white/10 bg-(--card-bg) px-3 py-2">
+				<option value="">全部状态</option>
+				{[...new Set(entities.map((e) => e.data.status))].sort().map((status) => <option value={status}>{status}</option>)}
+			</select>
+		</div>
+		<div id="ai-filter-count" class="text-xs text-30 mt-3">显示 {entities.length} / {entities.length}</div>
+	</div>
+
+	<div id="ai-entity-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+		{entities.map((entry, index) => (
+			<a
+				data-ai-entity
+				data-kind={entry.data.kind}
+				data-status={entry.data.status}
+				data-search={[entry.data.name, entry.data.summary, ...entry.data.tags].join(" ").toLowerCase()}
+				href={entityUrl(entry.id)}
+				class="card-base p-5 group onload-animation"
+				style={`animation-delay: calc(var(--content-delay) + ${index * 35}ms);`}
+			>
+				<div class="flex items-start gap-3">
+					<div class="w-10 h-10 rounded-xl bg-(--primary)/10 text-(--primary) flex items-center justify-center shrink-0">
+						<Icon name="material-symbols:deployed-code-outline" class="text-xl" />
+					</div>
+					<div class="min-w-0 flex-1">
+						<div class="flex items-center justify-between gap-3">
+							<h2 class="font-bold text-90 group-hover:text-(--primary) transition-colors truncate">{entry.data.name}</h2>
+							<span class="text-[11px] uppercase text-(--primary) shrink-0">{entry.data.status}</span>
+						</div>
+						<p class="text-sm text-50 mt-2 line-clamp-2">{entry.data.summary}</p>
+						<div class="flex flex-wrap gap-2 mt-3">
+							{entry.data.tags.slice(0, 3).map((tag) => (
+								<span class="text-xs text-30">#{tag}</span>
+							))}
+						</div>
+					</div>
+				</div>
+			</a>
+		))}
+	</div>
+</MainGridLayout>
+
+<script is:inline>
+(() => {
+	const search = document.getElementById("ai-search");
+	const kind = document.getElementById("ai-kind");
+	const status = document.getElementById("ai-status");
+	const count = document.getElementById("ai-filter-count");
+	const apply = () => {
+		const query = (search?.value || "").trim().toLowerCase();
+		let visible = 0;
+		const cards = [...document.querySelectorAll("[data-ai-entity]")];
+		for (const card of cards) {
+			const ok =
+				(!query || (card.dataset.search || "").includes(query)) &&
+				(!kind?.value || card.dataset.kind === kind.value) &&
+				(!status?.value || card.dataset.status === status.value);
+			card.style.display = ok ? "" : "none";
+			if (ok) visible += 1;
+		}
+		if (count) count.textContent = `显示 ${visible} / ${cards.length}`;
+	};
+	search?.addEventListener("input", apply);
+	kind?.addEventListener("change", apply);
+	status?.addEventListener("change", apply);
+})();
+</script>

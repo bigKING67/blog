@@ -1,0 +1,145 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { removeFileExtension, url } from "@/utils/url-utils";
+
+const entities = await getCollection("aiEntities");
+const briefs = await getCollection("aiBriefs");
+
+const byUpdated = [...entities].sort(
+	(a, b) => b.data.updated.getTime() - a.data.updated.getTime(),
+);
+const byPi67 = [...entities]
+	.sort((a, b) => b.data.relevancePi67 - a.data.relevancePi67)
+	.slice(0, 5);
+const byAios = [...entities]
+	.sort((a, b) => b.data.relevanceAios - a.data.relevanceAios)
+	.slice(0, 5);
+const latestBrief = [...briefs].sort(
+	(a, b) => b.data.date.getTime() - a.data.date.getTime(),
+)[0];
+
+const activeCount = entities.filter(
+	(entry) => !["reject", "archived"].includes(entry.data.status),
+).length;
+
+const entityUrl = (id: string) =>
+	url(`/ai/projects/${removeFileExtension(id)}/`);
+const briefUrl = (id: string) =>
+	url(`/ai/daily/${removeFileExtension(id)}/`);
+const dateText = (date: Date) => date.toISOString().slice(0, 10);
+---
+
+<MainGridLayout
+	title="AI Radar"
+	description="持续追踪值得关注的 AI 模型、Agent、论文、开源项目与工程基础设施。"
+>
+	<section class="card-base px-7 py-8 mb-4 overflow-hidden relative" data-pagefind-body>
+		<div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-(--primary)/10 blur-3xl"></div>
+		<div class="relative">
+			<div class="flex items-center gap-2 text-(--primary) text-sm font-semibold mb-3">
+				<Icon name="material-symbols:radar" class="text-xl" />
+				<span>WHOIS67 · AI INTELLIGENCE</span>
+			</div>
+			<h1 class="text-3xl md:text-4xl font-bold text-90 mb-3">AI Radar</h1>
+			<p class="text-50 max-w-2xl leading-7">
+				不是新闻堆砌，而是一份会持续更新的 AI 技术地图：记录项目、模型、论文、关系、判断，以及它们对 pi-67 / AIOS 的实际价值。
+			</p>
+			<div class="flex flex-wrap gap-2 mt-5">
+				<a href={url("/ai/projects/")} class="btn-regular px-4 py-2 rounded-lg">浏览知识库</a>
+				<a href={url("/ai/daily/")} class="btn-plain px-4 py-2 rounded-lg">每日简报</a>
+				<a href={url("/ai/graph/")} class="btn-plain px-4 py-2 rounded-lg">关系图谱</a>
+			</div>
+		</div>
+	</section>
+
+	<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+		<div class="card-base p-5">
+			<div class="text-3xl font-bold text-(--primary)">{entities.length}</div>
+			<div class="text-sm text-50 mt-1">知识实体</div>
+		</div>
+		<div class="card-base p-5">
+			<div class="text-3xl font-bold text-(--primary)">{activeCount}</div>
+			<div class="text-sm text-50 mt-1">持续跟踪</div>
+		</div>
+		<div class="card-base p-5">
+			<div class="text-3xl font-bold text-(--primary)">{briefs.length}</div>
+			<div class="text-sm text-50 mt-1">历史简报</div>
+		</div>
+		<div class="card-base p-5">
+			<div class="text-3xl font-bold text-(--primary)">{byUpdated.length ? dateText(byUpdated[0].data.updated).slice(5) : "—"}</div>
+			<div class="text-sm text-50 mt-1">最近更新</div>
+		</div>
+	</div>
+
+	{latestBrief && (
+		<a href={briefUrl(latestBrief.id)} class="card-base block p-6 mb-4 group">
+			<div class="flex items-center justify-between gap-4">
+				<div>
+					<div class="text-xs font-semibold text-(--primary) mb-2">LATEST BRIEF · {dateText(latestBrief.data.date)}</div>
+					<h2 class="text-xl font-bold text-90 group-hover:text-(--primary) transition-colors">{latestBrief.data.title}</h2>
+					<p class="text-sm text-50 mt-2 leading-6">{latestBrief.data.summary}</p>
+				</div>
+				<Icon name="material-symbols:arrow-forward-rounded" class="text-2xl text-30 group-hover:text-(--primary)" />
+			</div>
+		</a>
+	)}
+
+	<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+		<section class="card-base p-6">
+			<div class="flex items-center justify-between mb-4">
+				<h2 class="text-lg font-bold text-90">For pi-67</h2>
+				<span class="text-xs text-30">相关性 Top 5</span>
+			</div>
+			<div class="space-y-2">
+				{byPi67.map((entry) => (
+					<a href={entityUrl(entry.id)} class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-(--btn-plain-bg-hover) transition-colors">
+						<div class="min-w-0 flex-1">
+							<div class="font-semibold text-75 truncate">{entry.data.name}</div>
+							<div class="text-xs text-30 uppercase">{entry.data.status}</div>
+						</div>
+						<div class="text-lg font-bold text-(--primary)">{entry.data.relevancePi67}</div>
+					</a>
+				))}
+			</div>
+		</section>
+
+		<section class="card-base p-6">
+			<div class="flex items-center justify-between mb-4">
+				<h2 class="text-lg font-bold text-90">For AIOS</h2>
+				<span class="text-xs text-30">相关性 Top 5</span>
+			</div>
+			<div class="space-y-2">
+				{byAios.map((entry) => (
+					<a href={entityUrl(entry.id)} class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-(--btn-plain-bg-hover) transition-colors">
+						<div class="min-w-0 flex-1">
+							<div class="font-semibold text-75 truncate">{entry.data.name}</div>
+							<div class="text-xs text-30 uppercase">{entry.data.status}</div>
+						</div>
+						<div class="text-lg font-bold text-(--primary)">{entry.data.relevanceAios}</div>
+					</a>
+				))}
+			</div>
+		</section>
+	</div>
+
+	<section class="card-base p-6">
+		<div class="flex items-center justify-between mb-4">
+			<h2 class="text-lg font-bold text-90">Recently Updated</h2>
+			<a href={url("/ai/projects/")} class="text-sm text-(--primary)">查看全部 →</a>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+			{byUpdated.slice(0, 6).map((entry) => (
+				<a href={entityUrl(entry.id)} class="rounded-xl border border-black/5 dark:border-white/10 p-4 hover:border-(--primary)/40 transition-colors">
+					<div class="flex items-center justify-between gap-3">
+						<h3 class="font-bold text-75 truncate">{entry.data.name}</h3>
+						<span class="text-[11px] uppercase text-(--primary)">{entry.data.status}</span>
+					</div>
+					<p class="text-sm text-50 mt-2 line-clamp-2">{entry.data.summary}</p>
+					<div class="text-xs text-30 mt-3">{dateText(entry.data.updated)}</div>
+				</a>
+			))}
+		</div>
+	</section>
+</MainGridLayout>
