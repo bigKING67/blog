@@ -6,19 +6,27 @@ firstSeen: 2026-10-06
 updated: 2026-10-15
 status: research
 tags: [code-review, benchmark, evaluation]
-officialUrl: ""
-githubUrl: ""
+officialUrl: "https://github.blog/ai-and-ml/reviewbench-an-open-benchmark-for-ai-code-review/"
+githubUrl: "https://github.com/review-bench/ReviewBench"
 paperUrl: ""
 relevancePi67: 92
 relevanceAios: 72
-maturity: 0
+maturity: 80
 related: []
 timeline:
   - date: 2026-10-06
     title: 首次进入 AI 简报 / 技术研究
     summary: 历史提及记录已从此前简报回填到 AI Radar；后续更新时应重新核验一手来源与成熟度。
     status: research
-sources: []
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方 GitHub、官方公告或 arXiv 原始论文确认该实体真实存在，并补充长期可追溯来源。
+    status: research
+sources:
+  - title: "GitHub ReviewBench announcement"
+    url: "https://github.blog/ai-and-ml/reviewbench-an-open-benchmark-for-ai-code-review/"
+  - title: "ReviewBench GitHub"
+    url: "https://github.com/review-bench/ReviewBench"
 ---
 
 ## 历史导入说明
