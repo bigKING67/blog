@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
 import { removeFileExtension, url } from "@/utils/url-utils";
 import relations from "@/data/ai/relations.json";
+import systemNodes from "@/data/ai/nodes.json";
 
 const entities = await getCollection("aiEntities");
 const entityMap = new Map(
@@ -14,6 +15,17 @@ const entityMap = new Map(
 			status: entry.data.status,
 			kind: entry.data.kind,
 			url: url(`/ai/projects/${removeFileExtension(entry.id)}/`),
+		},
+	]),
+);
+const systemNodeMap = new Map(
+	systemNodes.map((node) => [
+		node.id,
+		{
+			name: node.label,
+			status: "system",
+			kind: node.kind,
+			url: "",
 		},
 	]),
 );
@@ -28,7 +40,7 @@ const radiusY = 235;
 
 const nodes = ids.map((id, index) => {
 	const angle = (Math.PI * 2 * index) / Math.max(ids.length, 1) - Math.PI / 2;
-	const known = entityMap.get(id);
+	const known = entityMap.get(id) ?? systemNodeMap.get(id);
 	return {
 		id,
 		x: centerX + Math.cos(angle) * radiusX,
@@ -146,11 +158,11 @@ const nodeMap = new Map(nodes.map((node) => [node.id, node]));
 			{relations.map((edge) => (
 				<div class="rounded-xl border border-black/5 dark:border-white/10 p-4">
 					<div class="text-sm font-semibold text-75">
-						{entityMap.get(edge.source)?.name ?? edge.source}
+						{entityMap.get(edge.source)?.name ?? systemNodeMap.get(edge.source)?.name ?? edge.source}
 					</div>
 					<div class="text-xs text-(--primary) my-1">— {edge.relation} →</div>
 					<div class="text-sm text-50">
-						{entityMap.get(edge.target)?.name ?? edge.target}
+						{entityMap.get(edge.target)?.name ?? systemNodeMap.get(edge.target)?.name ?? edge.target}
 					</div>
 				</div>
 			))}
