@@ -2,7 +2,7 @@
 name: OpenViking
 kind: project
 summary: 面向 AI Agent 的 Context Database，关注上下文、记忆与知识资源的组织和检索。
-firstSeen: 2026-10-15
+firstSeen: 2026-07-23
 updated: 2026-10-15
 status: research
 tags: [agent-memory, context-engineering, context-database]
@@ -13,6 +13,15 @@ relevancePi67: 96
 relevanceAios: 84
 maturity: 80
 related: []
+timeline:
+  - date: 2026-07-23
+    title: 首次进入 pi-67 记忆系统研究
+    summary: 在 pi-67 长期记忆方案讨论中，与 loopx 等项目一起进入研究范围。
+    status: research
+  - date: 2026-10-15
+    title: 纳入 AI Radar 首批种子实体
+    summary: 继续作为 Context / Memory 基础设施的重要候选。
+    status: research
 sources:
   - title: OpenViking GitHub
     url: https://github.com/volcengine/OpenViking
