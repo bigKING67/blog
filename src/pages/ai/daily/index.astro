@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { removeFileExtension, url } from "@/utils/url-utils";
+
+const briefs = (await getCollection("aiBriefs")).sort(
+	(a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const briefUrl = (id: string) =>
+	url(`/ai/daily/${removeFileExtension(id)}/`);
+const dateText = (date: Date) => date.toISOString().slice(0, 10);
+---
+
+<MainGridLayout title="AI Intelligence Daily" description="AI Radar 的每日深度简报归档。">
+	<div class="card-base px-7 py-6 mb-4">
+		<div class="flex flex-wrap items-center justify-between gap-3">
+			<div>
+				<div class="text-sm text-(--primary) font-semibold mb-1">AI RADAR</div>
+				<h1 class="text-2xl font-bold text-90">AI Intelligence Daily</h1>
+				<p class="text-sm text-50 mt-2">每日筛选，长期沉淀。共 {briefs.length} 期。</p>
+			</div>
+			<a href={url("/ai/")} class="btn-plain px-4 py-2 rounded-lg">返回 Radar</a>
+		</div>
+	</div>
+
+	<div class="space-y-3">
+		{briefs.map((brief, index) => (
+			<a href={briefUrl(brief.id)} class="card-base p-5 flex items-center gap-4 group onload-animation" style={`animation-delay: calc(var(--content-delay) + ${index * 35}ms);`}>
+				<div class="w-12 h-12 rounded-xl bg-(--primary)/10 text-(--primary) flex items-center justify-center shrink-0">
+					<Icon name="material-symbols:calendar-today-rounded" class="text-xl" />
+				</div>
+				<div class="min-w-0 flex-1">
+					<div class="text-xs text-(--primary) font-semibold">{dateText(brief.data.date)}</div>
+					<h2 class="font-bold text-90 group-hover:text-(--primary) transition-colors mt-1">{brief.data.title}</h2>
+					<p class="text-sm text-50 mt-1 line-clamp-2">{brief.data.summary}</p>
+				</div>
+				<Icon name="material-symbols:chevron-right-rounded" class="text-2xl text-30" />
+			</a>
+		))}
+	</div>
+</MainGridLayout>
