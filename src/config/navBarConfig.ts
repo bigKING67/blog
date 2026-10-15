@@ -16,6 +16,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	// 主页
 	links.push(LinkPresets.Home);
 
+	// AI Radar
+	links.push(LinkPresets.AiRadar);
+
 	// 文章及其子菜单
 	links.push({
 		name: "文章",
@@ -115,6 +118,11 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		name: "主页",
 		url: "/",
 		icon: "material-symbols:home",
+	},
+	AiRadar: {
+		name: "AI Radar",
+		url: "/ai/",
+		icon: "material-symbols:radar",
 	},
 	Resume: {
 		name: "简历",
