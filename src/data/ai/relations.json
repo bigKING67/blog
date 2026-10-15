@@ -1,0 +1,27 @@
+[
+  {
+    "source": "openviking",
+    "relation": "candidate_for",
+    "target": "pi-67-context-memory"
+  },
+  {
+    "source": "mxc",
+    "relation": "candidate_for",
+    "target": "pi-67-runtime-security"
+  },
+  {
+    "source": "paperclip",
+    "relation": "reference_for",
+    "target": "aios-team-collaboration"
+  },
+  {
+    "source": "automatos-ai",
+    "relation": "reference_for",
+    "target": "aios-agent-platform"
+  },
+  {
+    "source": "webcmd",
+    "relation": "candidate_for",
+    "target": "pi-67-browser-runtime"
+  }
+]
