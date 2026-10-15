@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { basename } from "node:path";
-import matter from "gray-matter";
 import { glob } from "glob";
+import matter from "gray-matter";
 
 type Relation = {
 	source: string;

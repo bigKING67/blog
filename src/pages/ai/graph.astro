@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
+import systemNodes from "@/data/ai/nodes.json";
+import relations from "@/data/ai/relations.json";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
 import { removeFileExtension, url } from "@/utils/url-utils";
-import relations from "@/data/ai/relations.json";
-import systemNodes from "@/data/ai/nodes.json";
 
 const entities = await getCollection("aiEntities");
 const entityMap = new Map(
@@ -30,7 +30,9 @@ const systemNodeMap = new Map(
 	]),
 );
 
-const ids = [...new Set(relations.flatMap((edge) => [edge.source, edge.target]))];
+const ids = [
+	...new Set(relations.flatMap((edge) => [edge.source, edge.target])),
+];
 const width = 960;
 const height = 620;
 const centerX = width / 2;

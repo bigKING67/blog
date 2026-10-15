@@ -73,7 +73,14 @@ type AiEntityData = {
 		date: Date;
 		title: string;
 		summary: string;
-		status?: "discovered" | "watch" | "research" | "test" | "adopt" | "reject" | "archived";
+		status?:
+			| "discovered"
+			| "watch"
+			| "research"
+			| "test"
+			| "adopt"
+			| "reject"
+			| "archived";
 	}[];
 };
 
