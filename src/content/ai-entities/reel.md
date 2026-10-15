@@ -8,17 +8,23 @@ status: research
 tags: [video-generation, visual-memory, multi-shot]
 officialUrl: ""
 githubUrl: ""
-paperUrl: ""
+paperUrl: "https://arxiv.org/abs/2610.16632"
 relevancePi67: 49
 relevanceAios: 97
-maturity: 0
+maturity: 45
 related: []
 timeline:
   - date: 2026-10-15
     title: 首次进入 AI 简报 / 技术研究
     summary: 历史提及记录已从此前简报回填到 AI Radar；后续更新时应重新核验一手来源与成熟度。
     status: research
-sources: []
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方 GitHub、官方公告或 arXiv 原始论文确认该实体真实存在，并补充长期可追溯来源。
+    status: research
+sources:
+  - title: "REEL paper"
+    url: "https://arxiv.org/abs/2610.16632"
 ---
 
 ## 历史导入说明
