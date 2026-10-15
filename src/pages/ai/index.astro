@@ -26,8 +26,7 @@ const activeCount = entities.filter(
 
 const entityUrl = (id: string) =>
 	url(`/ai/projects/${removeFileExtension(id)}/`);
-const briefUrl = (id: string) =>
-	url(`/ai/daily/${removeFileExtension(id)}/`);
+const briefUrl = (id: string) => url(`/ai/daily/${removeFileExtension(id)}/`);
 const dateText = (date: Date) => date.toISOString().slice(0, 10);
 ---
 

@@ -1,127 +1,127 @@
 [
-  {
-    "source": "openviking",
-    "relation": "candidate_for",
-    "target": "pi-67-context-memory"
-  },
-  {
-    "source": "hindsight",
-    "relation": "candidate_for",
-    "target": "pi-67-context-memory"
-  },
-  {
-    "source": "context-evo",
-    "relation": "informs",
-    "target": "pi-67-context-engine"
-  },
-  {
-    "source": "statetape",
-    "relation": "informs",
-    "target": "pi-67-context-engine"
-  },
-  {
-    "source": "context-language-models",
-    "relation": "informs",
-    "target": "pi-67-context-engine"
-  },
-  {
-    "source": "mxc",
-    "relation": "candidate_for",
-    "target": "pi-67-runtime-security"
-  },
-  {
-    "source": "nvidia-openshell",
-    "relation": "reference_for",
-    "target": "pi-67-runtime-security"
-  },
-  {
-    "source": "gui-harvest",
-    "relation": "informs",
-    "target": "pi-67-computer-use"
-  },
-  {
-    "source": "webcmd",
-    "relation": "candidate_for",
-    "target": "pi-67-browser-runtime"
-  },
-  {
-    "source": "prime-agent",
-    "relation": "reference_for",
-    "target": "pi-67-runtime"
-  },
-  {
-    "source": "deepseek-harness",
-    "relation": "reference_for",
-    "target": "pi-67-runtime"
-  },
-  {
-    "source": "mingbird",
-    "relation": "informs",
-    "target": "pi-67-local-agent"
-  },
-  {
-    "source": "microsoft-decision-1",
-    "relation": "candidate_for",
-    "target": "aios-decision-plane"
-  },
-  {
-    "source": "paperclip",
-    "relation": "reference_for",
-    "target": "aios-team-collaboration"
-  },
-  {
-    "source": "automatos-ai",
-    "relation": "reference_for",
-    "target": "aios-agent-platform"
-  },
-  {
-    "source": "cloudflare-artifacts",
-    "relation": "reference_for",
-    "target": "aios-agent-workspace"
-  },
-  {
-    "source": "embeddinggemma-2",
-    "relation": "candidate_for",
-    "target": "aios-multimodal-rag"
-  },
-  {
-    "source": "videotapestry",
-    "relation": "informs",
-    "target": "aios-video-rag"
-  },
-  {
-    "source": "reel",
-    "relation": "informs",
-    "target": "aios-visual-memory"
-  },
-  {
-    "source": "vidforge",
-    "relation": "reference_for",
-    "target": "aios-creative-engine"
-  },
-  {
-    "source": "artcraft",
-    "relation": "reference_for",
-    "target": "aios-creative-engine"
-  },
-  {
-    "source": "lightonocr-3",
-    "relation": "candidate_for",
-    "target": "aios-document-pipeline"
-  },
-  {
-    "source": "longharness",
-    "relation": "reference_for",
-    "target": "pi-67-deep-research"
-  },
-  {
-    "source": "swe-critix",
-    "relation": "reference_for",
-    "target": "pi-67-evaluation"
-  },
-  {
-    "source": "reviewbench",
-    "relation": "reference_for",
-    "target": "review-craft-evaluation"
-  }
+	{
+		"source": "openviking",
+		"relation": "candidate_for",
+		"target": "pi-67-context-memory"
+	},
+	{
+		"source": "hindsight",
+		"relation": "candidate_for",
+		"target": "pi-67-context-memory"
+	},
+	{
+		"source": "context-evo",
+		"relation": "informs",
+		"target": "pi-67-context-engine"
+	},
+	{
+		"source": "statetape",
+		"relation": "informs",
+		"target": "pi-67-context-engine"
+	},
+	{
+		"source": "context-language-models",
+		"relation": "informs",
+		"target": "pi-67-context-engine"
+	},
+	{
+		"source": "mxc",
+		"relation": "candidate_for",
+		"target": "pi-67-runtime-security"
+	},
+	{
+		"source": "nvidia-openshell",
+		"relation": "reference_for",
+		"target": "pi-67-runtime-security"
+	},
+	{
+		"source": "gui-harvest",
+		"relation": "informs",
+		"target": "pi-67-computer-use"
+	},
+	{
+		"source": "webcmd",
+		"relation": "candidate_for",
+		"target": "pi-67-browser-runtime"
+	},
+	{
+		"source": "prime-agent",
+		"relation": "reference_for",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "deepseek-harness",
+		"relation": "reference_for",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "mingbird",
+		"relation": "informs",
+		"target": "pi-67-local-agent"
+	},
+	{
+		"source": "microsoft-decision-1",
+		"relation": "candidate_for",
+		"target": "aios-decision-plane"
+	},
+	{
+		"source": "paperclip",
+		"relation": "reference_for",
+		"target": "aios-team-collaboration"
+	},
+	{
+		"source": "automatos-ai",
+		"relation": "reference_for",
+		"target": "aios-agent-platform"
+	},
+	{
+		"source": "cloudflare-artifacts",
+		"relation": "reference_for",
+		"target": "aios-agent-workspace"
+	},
+	{
+		"source": "embeddinggemma-2",
+		"relation": "candidate_for",
+		"target": "aios-multimodal-rag"
+	},
+	{
+		"source": "videotapestry",
+		"relation": "informs",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "reel",
+		"relation": "informs",
+		"target": "aios-visual-memory"
+	},
+	{
+		"source": "vidforge",
+		"relation": "reference_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "artcraft",
+		"relation": "reference_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "lightonocr-3",
+		"relation": "candidate_for",
+		"target": "aios-document-pipeline"
+	},
+	{
+		"source": "longharness",
+		"relation": "reference_for",
+		"target": "pi-67-deep-research"
+	},
+	{
+		"source": "swe-critix",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "reviewbench",
+		"relation": "reference_for",
+		"target": "review-craft-evaluation"
+	}
 ]

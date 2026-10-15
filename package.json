@@ -19,7 +19,8 @@
     "format": "biome format --write ./src",
     "lint": "biome check --write ./src",
     "preinstall": "node -e \"const p = process.env.npm_execpath || ''; if (!p.includes('pnpm')) { console.error('Use pnpm to install dependencies.'); process.exit(1); }\"",
-    "lqips": "tsx scripts/generate-lqips.ts"
+    "lqips": "tsx scripts/generate-lqips.ts",
+    "validate:ai": "tsx scripts/validate-ai-content.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

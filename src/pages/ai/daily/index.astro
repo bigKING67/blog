@@ -7,8 +7,7 @@ import { removeFileExtension, url } from "@/utils/url-utils";
 const briefs = (await getCollection("aiBriefs")).sort(
 	(a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
-const briefUrl = (id: string) =>
-	url(`/ai/daily/${removeFileExtension(id)}/`);
+const briefUrl = (id: string) => url(`/ai/daily/${removeFileExtension(id)}/`);
 const dateText = (date: Date) => date.toISOString().slice(0, 10);
 ---
 
