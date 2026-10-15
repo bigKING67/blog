@@ -7,18 +7,26 @@ updated: 2026-10-15
 status: research
 tags: [coding-agent, evaluation, critic]
 officialUrl: ""
-githubUrl: ""
-paperUrl: ""
+githubUrl: "https://github.com/SWE-Critix/SWE-Critix"
+paperUrl: "https://arxiv.org/abs/2610.13356"
 relevancePi67: 93
 relevanceAios: 79
-maturity: 0
+maturity: 50
 related: []
 timeline:
   - date: 2026-10-13
     title: 首次进入 AI 简报 / 技术研究
     summary: 历史提及记录已从此前简报回填到 AI Radar；后续更新时应重新核验一手来源与成熟度。
     status: research
-sources: []
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方 GitHub、官方公告或 arXiv 原始论文确认该实体真实存在，并补充长期可追溯来源。
+    status: research
+sources:
+  - title: "SWE-Critix paper"
+    url: "https://arxiv.org/abs/2610.13356"
+  - title: "SWE-Critix GitHub"
+    url: "https://github.com/SWE-Critix/SWE-Critix"
 ---
 
 ## 历史导入说明
