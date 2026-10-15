@@ -7,18 +7,24 @@ updated: 2026-10-15
 status: watch
 tags: [video-agent, workflow, creative-engine]
 officialUrl: ""
-githubUrl: ""
+githubUrl: "https://github.com/WANGLEVY9/VidForge"
 paperUrl: ""
 relevancePi67: 55
 relevanceAios: 93
-maturity: 0
+maturity: 55
 related: []
 timeline:
   - date: 2026-09-29
     title: 首次进入 AI 简报 / 技术研究
     summary: 历史提及记录已从此前简报回填到 AI Radar；后续更新时应重新核验一手来源与成熟度。
     status: watch
-sources: []
+  - date: 2026-10-15
+    title: 一手来源核验
+    summary: 已通过官方 GitHub、官方公告或 arXiv 原始论文确认该实体真实存在，并补充长期可追溯来源。
+    status: watch
+sources:
+  - title: "VidForge GitHub"
+    url: "https://github.com/WANGLEVY9/VidForge"
 ---
 
 ## 历史导入说明
