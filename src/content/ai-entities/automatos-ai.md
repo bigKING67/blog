@@ -2,7 +2,7 @@
 name: Automatos AI
 kind: project
 summary: 自部署的开源 AI Operating System，组合多 Agent、知识、Playbook、工具与多模型 Provider。
-firstSeen: 2026-10-15
+firstSeen: 2026-10-14
 updated: 2026-10-15
 status: research
 tags: [ai-os, multi-agent, knowledge-graph, self-hosted]
@@ -13,6 +13,15 @@ relevancePi67: 84
 relevanceAios: 97
 maturity: 74
 related: []
+timeline:
+  - date: 2026-10-14
+    title: 首次进入 AI 简报
+    summary: 因支持多种 CLI Agent 与统一任务平台，进入 AIOS 架构研究范围。
+    status: research
+  - date: 2026-10-15
+    title: 纳入 AI Radar 首批种子实体
+    summary: 重点观察 Runtime Adapter、Task、Knowledge 与企业化能力。
+    status: research
 sources:
   - title: Automatos AI GitHub
     url: https://github.com/AutomatosAI/automatos-ai
