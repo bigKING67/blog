@@ -2,7 +2,7 @@
 name: Webcmd
 kind: project
 summary: 面向 AI Agent 的自学习浏览器基础设施，把网站导航经验沉淀为可复用的本地操作记忆。
-firstSeen: 2026-10-15
+firstSeen: 2026-10-10
 updated: 2026-10-15
 status: test
 tags: [browser-agent, operational-memory, web-automation]
@@ -13,6 +13,15 @@ relevancePi67: 93
 relevanceAios: 85
 maturity: 76
 related: []
+timeline:
+  - date: 2026-10-10
+    title: 首次进入 AI 简报
+    summary: 因可复用浏览器操作经验与 Pi 集成价值进入测试范围。
+    status: test
+  - date: 2026-10-15
+    title: 纳入 AI Radar 首批种子实体
+    summary: 维持 TEST，重点验证重复网站任务中的成本与可靠性。
+    status: test
 sources:
   - title: Webcmd GitHub
     url: https://github.com/agentrhq/webcmd
