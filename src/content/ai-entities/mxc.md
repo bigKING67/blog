@@ -2,7 +2,7 @@
 name: Microsoft MXC
 kind: project
 summary: Microsoft eXecution Container，面向 Windows、Linux、macOS 的跨平台不可信代码执行与沙箱基础设施。
-firstSeen: 2026-10-15
+firstSeen: 2026-10-08
 updated: 2026-10-15
 status: test
 tags: [agent-runtime, sandbox, security, cross-platform]
@@ -13,6 +13,15 @@ relevancePi67: 97
 relevanceAios: 94
 maturity: 82
 related: []
+timeline:
+  - date: 2026-10-08
+    title: 首次进入 AI 简报
+    summary: 作为跨平台 Agent Sandbox / Runtime Security 候选进入研究。
+    status: test
+  - date: 2026-10-15
+    title: 纳入 AI Radar 首批种子实体
+    summary: 维持 TEST，优先验证 Windows 与 macOS 端的执行边界。
+    status: test
 sources:
   - title: Microsoft MXC GitHub
     url: https://github.com/microsoft/mxc
