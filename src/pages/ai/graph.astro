@@ -101,8 +101,8 @@ const nodeMap = new Map(nodes.map((node) => [node.id, node]));
 				);
 			})}
 
-			{nodes.map((node) => {
-				const content = (
+			{nodes.map((node) => (
+				<a href={node.url || "#"} aria-disabled={!node.url}>
 					<g>
 						<circle
 							cx={node.x}
@@ -132,9 +132,8 @@ const nodeMap = new Map(nodes.map((node) => [node.id, node]));
 							{node.status}
 						</text>
 					</g>
-				);
-				return node.url ? <a href={node.url}>{content}</a> : content;
-			})}
+				</a>
+			))}
 		</svg>
 	</section>
 
