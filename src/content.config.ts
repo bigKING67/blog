@@ -69,6 +69,12 @@ type AiEntityData = {
 		url: string;
 		published?: string;
 	}[];
+	timeline: {
+		date: Date;
+		title: string;
+		summary: string;
+		status?: "discovered" | "watch" | "research" | "test" | "adopt" | "reject" | "archived";
+	}[];
 };
 
 type AiBriefData = {
@@ -173,6 +179,27 @@ const aiEntitiesCollection: ContentCollection<AiEntityData> = defineCollection({
 					title: z.string(),
 					url: z.string(),
 					published: z.string().optional(),
+				}),
+			)
+			.optional()
+			.default([]),
+		timeline: z
+			.array(
+				z.object({
+					date: z.date(),
+					title: z.string(),
+					summary: z.string().optional().default(""),
+					status: z
+						.enum([
+							"discovered",
+							"watch",
+							"research",
+							"test",
+							"adopt",
+							"reject",
+							"archived",
+						])
+						.optional(),
 				}),
 			)
 			.optional()
