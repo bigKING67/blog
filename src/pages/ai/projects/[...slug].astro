@@ -59,6 +59,27 @@ const dateText = (date: Date) => date.toISOString().slice(0, 10);
 			{entry.data.tags.map((tag) => <span class="text-xs rounded-full bg-(--primary)/10 text-(--primary) px-3 py-1">#{tag}</span>)}
 		</div>
 
+		{entry.data.timeline.length > 0 && (
+			<section class="mb-8">
+				<h2 class="font-bold text-90 mb-4">Timeline</h2>
+				<div class="relative pl-5 border-l border-black/10 dark:border-white/10 space-y-5">
+					{[...entry.data.timeline]
+						.sort((a, b) => b.date.getTime() - a.date.getTime())
+						.map((item) => (
+							<div class="relative">
+								<div class="absolute -left-[1.48rem] top-1.5 h-2.5 w-2.5 rounded-full bg-(--primary) ring-4 ring-(--card-bg)"></div>
+								<div class="flex flex-wrap items-center gap-2">
+									<span class="text-xs font-semibold text-(--primary)">{dateText(item.date)}</span>
+									{item.status && <span class="text-[10px] uppercase text-30">{item.status}</span>}
+								</div>
+								<div class="font-semibold text-75 mt-1">{item.title}</div>
+								{item.summary && <p class="text-sm text-50 mt-1 leading-6">{item.summary}</p>}
+							</div>
+						))}
+				</div>
+			</section>
+		)}
+
 		<Markdown class="mt-2">
 			<Content />
 		</Markdown>
