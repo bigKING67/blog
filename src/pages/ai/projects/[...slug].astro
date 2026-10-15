@@ -1,0 +1,80 @@
+---
+import { getCollection, render } from "astro:content";
+import Markdown from "@components/common/Markdown.astro";
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { removeFileExtension, url } from "@/utils/url-utils";
+
+export async function getStaticPaths() {
+	const entities = await getCollection("aiEntities");
+	return entities.map((entry) => ({
+		params: { slug: removeFileExtension(entry.id) },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const dateText = (date: Date) => date.toISOString().slice(0, 10);
+---
+
+<MainGridLayout title={entry.data.name} description={entry.data.summary}>
+	<article class="card-base px-7 md:px-9 py-7" data-pagefind-body>
+		<a href={url("/ai/projects/")} class="inline-flex items-center gap-1 text-sm text-50 hover:text-(--primary) mb-5">
+			<Icon name="material-symbols:arrow-back-rounded" />
+			<span>Knowledge Base</span>
+		</a>
+
+		<div class="flex flex-wrap items-start justify-between gap-4 mb-5">
+			<div>
+				<div class="text-xs uppercase tracking-wide text-(--primary) font-semibold mb-2">{entry.data.kind} · {entry.data.status}</div>
+				<h1 data-pagefind-meta="title" class="text-3xl font-bold text-90">{entry.data.name}</h1>
+				<p class="text-50 mt-3 max-w-2xl leading-7">{entry.data.summary}</p>
+			</div>
+			<div class="grid grid-cols-3 gap-2 min-w-64">
+				<div class="rounded-xl bg-black/3 dark:bg-white/5 p-3 text-center">
+					<div class="text-xl font-bold text-(--primary)">{entry.data.relevancePi67}</div>
+					<div class="text-[11px] text-30">pi-67</div>
+				</div>
+				<div class="rounded-xl bg-black/3 dark:bg-white/5 p-3 text-center">
+					<div class="text-xl font-bold text-(--primary)">{entry.data.relevanceAios}</div>
+					<div class="text-[11px] text-30">AIOS</div>
+				</div>
+				<div class="rounded-xl bg-black/3 dark:bg-white/5 p-3 text-center">
+					<div class="text-xl font-bold text-(--primary)">{entry.data.maturity}</div>
+					<div class="text-[11px] text-30">Maturity</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-50 border-y border-black/5 dark:border-white/10 py-4 mb-6">
+			<span>首次收录：{dateText(entry.data.firstSeen)}</span>
+			<span>最近更新：{dateText(entry.data.updated)}</span>
+			{entry.data.githubUrl && <a href={entry.data.githubUrl} target="_blank" rel="noreferrer" class="text-(--primary)">GitHub ↗</a>}
+			{entry.data.officialUrl && <a href={entry.data.officialUrl} target="_blank" rel="noreferrer" class="text-(--primary)">Official ↗</a>}
+			{entry.data.paperUrl && <a href={entry.data.paperUrl} target="_blank" rel="noreferrer" class="text-(--primary)">Paper ↗</a>}
+		</div>
+
+		<div class="flex flex-wrap gap-2 mb-6">
+			{entry.data.tags.map((tag) => <span class="text-xs rounded-full bg-(--primary)/10 text-(--primary) px-3 py-1">#{tag}</span>)}
+		</div>
+
+		<Markdown class="mt-2">
+			<Content />
+		</Markdown>
+
+		{entry.data.sources.length > 0 && (
+			<section class="mt-8 pt-6 border-t border-black/5 dark:border-white/10">
+				<h2 class="font-bold text-90 mb-3">Sources</h2>
+				<ul class="space-y-2 text-sm">
+					{entry.data.sources.map((source) => (
+						<li>
+							<a href={source.url} target="_blank" rel="noreferrer" class="text-(--primary) hover:underline">{source.title}</a>
+							{source.published && <span class="text-30 ml-2">{source.published}</span>}
+						</li>
+					))}
+				</ul>
+			</section>
+		)}
+	</article>
+</MainGridLayout>
