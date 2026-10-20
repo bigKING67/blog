@@ -153,5 +153,10 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "deepseek-v4-1-flash-1017",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
 	}
 ]
