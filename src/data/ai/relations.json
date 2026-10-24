@@ -153,5 +153,35 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "openai-frontier-containment-2026",
+		"relation": "informs",
+		"target": "pi-67-runtime-security"
+	},
+	{
+		"source": "recursive-flint",
+		"relation": "candidate_for",
+		"target": "pi-67-local-agent"
+	},
+	{
+		"source": "recursive-flint",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "github-enterprise-app-installations",
+		"relation": "reference_for",
+		"target": "pi-67-runtime-security"
+	},
+	{
+		"source": "flux-3-image-klein",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "openai-perturbai-agent-research",
+		"relation": "informs",
+		"target": "pi-67-deep-research"
 	}
 ]
