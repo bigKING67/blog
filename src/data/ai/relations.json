@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "openai-decisions-api",
+		"relation": "candidate_for",
+		"target": "aios-decision-plane"
+	},
+	{
+		"source": "openai-decisions-api",
+		"relation": "reference_for",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "hi3d-v1",
+		"relation": "informs",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "vincie-next",
+		"relation": "informs",
+		"target": "aios-creative-engine"
 	}
 ]
