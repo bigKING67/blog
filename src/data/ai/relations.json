@@ -153,5 +153,30 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "agensh",
+		"relation": "reference_for",
+		"target": "aios-team-collaboration"
+	},
+	{
+		"source": "agensh",
+		"relation": "reference_for",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "groundedvdr",
+		"relation": "informs",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "groundedvdr",
+		"relation": "reference_for",
+		"target": "pi-67-deep-research"
+	},
+	{
+		"source": "tokengate",
+		"relation": "informs",
+		"target": "pi-67-context-engine"
 	}
 ]
