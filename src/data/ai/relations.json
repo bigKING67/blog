@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "gpt-6-1-terra",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "google-genie-4",
+		"relation": "informs",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "oracle-ai-media-models",
+		"relation": "reference_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "projectmem",
+		"relation": "candidate_for",
+		"target": "pi-67-context-memory"
 	}
 ]
