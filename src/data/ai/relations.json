@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "mistral-large-4",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "pika-h3-flex",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "github-agentic-workflows",
+		"relation": "reference_for",
+		"target": "aios-agent-platform"
+	},
+	{
+		"source": "github-replica",
+		"relation": "reference_for",
+		"target": "aios-agent-workspace"
 	}
 ]
