@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "lfm3-model-family",
+		"relation": "candidate_for",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "lfm3-model-family",
+		"relation": "candidate_for",
+		"target": "aios-multimodal-rag"
+	},
+	{
+		"source": "lfm3-model-family",
+		"relation": "candidate_for",
+		"target": "pi-67-local-agent"
+	},
+	{
+		"source": "particle-1",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
 	}
 ]
