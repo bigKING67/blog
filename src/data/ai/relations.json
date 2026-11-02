@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "clover-35b-a3b-preview",
+		"relation": "candidate_for",
+		"target": "pi-67-local-agent"
+	},
+	{
+		"source": "sensenova-loop-9b-preview",
+		"relation": "candidate_for",
+		"target": "aios-multimodal-rag"
+	},
+	{
+		"source": "mai-image-2-7",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "neo4j-context-engine",
+		"relation": "reference_for",
+		"target": "pi-67-context-engine"
 	}
 ]
