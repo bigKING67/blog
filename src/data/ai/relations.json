@@ -153,5 +153,20 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "meta-context-engineering",
+		"relation": "informs",
+		"target": "pi-67-context-engine"
+	},
+	{
+		"source": "video-deepresearch",
+		"relation": "informs",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "sentinelone-singularity-adr",
+		"relation": "reference_for",
+		"target": "pi-67-runtime-security"
 	}
 ]
