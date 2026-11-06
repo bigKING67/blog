@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "gpt-6-cyber",
+		"relation": "reference_for",
+		"target": "pi-67-runtime-security"
+	},
+	{
+		"source": "gpt-image-2-6",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "edenlive",
+		"relation": "reference_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "just-in-time-agent-memory",
+		"relation": "informs",
+		"target": "pi-67-context-memory"
 	}
 ]
