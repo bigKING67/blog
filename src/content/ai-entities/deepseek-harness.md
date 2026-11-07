@@ -3,7 +3,7 @@ name: DeepSeek Harness
 kind: project
 summary: Coding Agent Harness，重点关注 Worktree、Session State、Working Directory 与远程执行。
 firstSeen: 2026-10-12
-updated: 2026-10-15
+updated: 2026-11-07
 status: research
 tags: [agent-harness, worktree, remote-runtime]
 officialUrl: "https://www.deepseek.com/en/harness/"
@@ -12,7 +12,7 @@ paperUrl: ""
 relevancePi67: 95
 relevanceAios: 84
 maturity: 65
-related: []
+related: [dsh-superagent-prototype]
 timeline:
   - date: 2026-10-12
     title: 首次进入 AI 简报 / 技术研究
@@ -22,11 +22,18 @@ timeline:
     title: 一手来源核验
     summary: 已通过官方站点、官方 GitHub 或官方文档确认该实体真实存在，并补充长期可追溯来源。
     status: research
+  - date: 2026-11-07
+    title: 关联 dsh-superagent 公开研究原型
+    summary: DeepSeek Harness 团队发布 GitHub/飞书事件驱动的单仓库主动式 Coding Agent 原型；仅供研究参考，不能据此提升 Harness 整体成熟度或宣称官方正式产品。
+    status: research
 sources:
   - title: "DeepSeek Harness official page"
     url: "https://www.deepseek.com/en/harness/"
   - title: "DeepSeek Harness GitHub"
     url: "https://github.com/deepseek-ai/deepseek-harness"
+  - title: "DeepSeek dsh-superagent research prototype"
+    url: "https://github.com/deepseek-ai/dsh-superagent-prototype"
+    published: "2026-10-31"
 ---
 
 ## 历史导入说明
