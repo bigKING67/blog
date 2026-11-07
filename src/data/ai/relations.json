@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "kanana-2-v-decide-3b-2611",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "gemini-omni-1-2-flash",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "cosmos3-nano-interactive-checkpoints",
+		"relation": "informs",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "dsh-superagent-prototype",
+		"relation": "reference_for",
+		"target": "pi-67-runtime"
 	}
 ]
