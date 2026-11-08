@@ -7,7 +7,7 @@ updated: 2026-11-08
 status: research
 tags: [agent-harness, reinforcement-learning, lora, coding-agent, safety, open-source]
 officialUrl: "https://huggingface.co/blog/harness-hub/harness-adapters"
-githubUrl: "https://github.com/harness-hub/safeagents"
+githubUrl: "https://github.com/huggingface/safeagents"
 paperUrl: ""
 relevancePi67: 97
 relevanceAios: 73
@@ -23,7 +23,7 @@ sources:
     url: "https://huggingface.co/blog/harness-hub/harness-adapters"
     published: "2026-11-06"
   - title: "Harness Hub: safeagents official repository"
-    url: "https://github.com/harness-hub/safeagents"
+    url: "https://github.com/huggingface/safeagents"
 ---
 
 ## 核心解读
