@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "harness-adapters-safe-rl",
+		"relation": "informs",
+		"target": "pi-67-context-engine"
+	},
+	{
+		"source": "harness-adapters-safe-rl",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "sensenova-6-8-code2video",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "cope-videolm",
+		"relation": "informs",
+		"target": "aios-video-rag"
 	}
 ]
