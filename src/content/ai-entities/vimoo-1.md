@@ -14,10 +14,6 @@ relevanceAios: 97
 maturity: 67
 related: []
 timeline:
-  - date: 2026-10-01
-    title: "Vimoo 1.0 系列在 2026 年 10 月公开"
-    summary: "官方模型卡只标注发布月份，具体首发日未独立确定；不可把本次收录日说成首发日。"
-    status: research
   - date: 2026-11-09
     title: "核验开放权重与 Ecom API 能力边界"
     summary: "核验普通 T2V/I2V、Lite 权重及推理代码；Ecom 支持 1–9 张商品参考图生成 20 秒 9:16 720p 视频的能力来自官方 API 介绍，不等同于 Ecom 全管线开放权重。"
