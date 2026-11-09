@@ -26,7 +26,7 @@ sources:
   - title: "Nous Research official Arete-27B model card"
     url: "https://huggingface.co/NousResearch/Arete-27B"
   - title: "Nous Research release and training analysis"
-    url: "https://nousresearch.com/introducing-arete-27b/"
+    url: "https://nousresearch.com/arete"
 ---
 
 ## 核心判断
