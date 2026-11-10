@@ -22,9 +22,8 @@ sources:
   - title: "Microsoft Copilot Harness 官方发布（2026-10-28）"
     url: "https://blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work/"
     published: "2026-10-28"
-  - title: "GitHub Copilot SDK 官方仓库"
+  - title: "GitHub Copilot SDK 官方仓库（已有仓库，非 10 月 28 日新建）"
     url: "https://github.com/github/copilot-sdk"
-    published: "2026-10-28"
 ---
 
 ## 工程判断
