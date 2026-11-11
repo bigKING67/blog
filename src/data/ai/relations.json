@@ -153,5 +153,30 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "gemini-4-carbon",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "ibm-microsoft-imagine-enterprise",
+		"relation": "reference_for",
+		"target": "aios-agent-platform"
+	},
+	{
+		"source": "multimodal-knowledge-agent-mka",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "videostir",
+		"relation": "candidate_for",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "nvidia-openshell",
+		"relation": "reference_for",
+		"target": "aios-agent-platform"
 	}
 ]
