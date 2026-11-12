@@ -153,5 +153,30 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "gemini-decision-1",
+		"relation": "candidate_for",
+		"target": "aios-decision-plane"
+	},
+	{
+		"source": "qvac-botpsy-0-8b",
+		"relation": "candidate_for",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "rea-video",
+		"relation": "informs",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "viggle-remake",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "copilotkit-openbot",
+		"relation": "reference_for",
+		"target": "aios-agent-platform"
 	}
 ]
