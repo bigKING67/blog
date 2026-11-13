@@ -153,5 +153,35 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "gemini-4-hydrogen",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "gemini-4-hydrogen",
+		"relation": "candidate_for",
+		"target": "aios-multimodal-rag"
+	},
+	{
+		"source": "minimax-h3-image",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "shadcn-improve",
+		"relation": "reference_for",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "databricks-genie",
+		"relation": "reference_for",
+		"target": "aios-agent-platform"
+	},
+	{
+		"source": "zonos3-mini",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
 	}
 ]
