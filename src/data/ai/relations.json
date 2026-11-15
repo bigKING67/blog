@@ -153,5 +153,30 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "world-labs-atlas",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "singularity-bench",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "singularity-bench",
+		"relation": "informs",
+		"target": "pi-67-runtime-security"
+	},
+	{
+		"source": "meminstream",
+		"relation": "informs",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "meminstream",
+		"relation": "reference_for",
+		"target": "aios-visual-memory"
 	}
 ]
