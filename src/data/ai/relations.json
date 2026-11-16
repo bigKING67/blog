@@ -153,5 +153,30 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "llama-cpp",
+		"relation": "candidate_for",
+		"target": "pi-67-local-agent"
+	},
+	{
+		"source": "scarlet",
+		"relation": "reference_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "perplexity-decider-v1-3",
+		"relation": "candidate_for",
+		"target": "aios-decision-plane"
+	},
+	{
+		"source": "perplexity-decider-v1-3",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "expo-simulators",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
 	}
 ]
