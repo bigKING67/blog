@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "agentrun",
+		"relation": "reference_for",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "agentrun",
+		"relation": "informs",
+		"target": "pi-67-context-memory"
+	},
+	{
+		"source": "nemotron-for-science",
+		"relation": "informs",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "nemotron-for-science",
+		"relation": "informs",
+		"target": "aios-multimodal-rag"
 	}
 ]
