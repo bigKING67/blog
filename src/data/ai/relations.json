@@ -153,5 +153,30 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "gpt-6-2-astra",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "gpt-6-2-sol",
+		"relation": "candidate_for",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "github-copilot-evals",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "wevisforensics",
+		"relation": "informs",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "wevisforensics",
+		"relation": "informs",
+		"target": "aios-visual-memory"
 	}
 ]
