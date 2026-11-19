@@ -153,5 +153,20 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "gemini-4-neon",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "seedance-2-5-flash",
+		"relation": "candidate_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "daisyrose-27b",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
 	}
 ]
