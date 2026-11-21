@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "inkling-2-mini",
+		"relation": "candidate_for",
+		"target": "pi-67-local-agent"
+	},
+	{
+		"source": "hermes-agent",
+		"relation": "informs",
+		"target": "pi-67-context-engine"
+	},
+	{
+		"source": "scaleworld",
+		"relation": "informs",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "diffusion-activation-steering",
+		"relation": "informs",
+		"target": "aios-creative-engine"
 	}
 ]
