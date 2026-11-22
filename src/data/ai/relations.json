@@ -153,5 +153,20 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "harness-adapters-qwen38-27b",
+		"relation": "informs",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "rumble-2-flash",
+		"relation": "candidate_for",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "atto-embeddings",
+		"relation": "candidate_for",
+		"target": "pi-67-context-memory"
 	}
 ]
