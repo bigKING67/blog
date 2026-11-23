@@ -153,5 +153,25 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "v-jepa-lm",
+		"relation": "candidate_for",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "wavlate",
+		"relation": "candidate_for",
+		"target": "aios-multimodal-rag"
+	},
+	{
+		"source": "specwm-streaming-world-model",
+		"relation": "informs",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "sensenova-loop-9b",
+		"relation": "candidate_for",
+		"target": "pi-67-local-agent"
 	}
 ]
