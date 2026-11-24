@@ -153,5 +153,35 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "glm-5-4",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "strands-decider-v2",
+		"relation": "candidate_for",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "strands-decider-v2",
+		"relation": "candidate_for",
+		"target": "aios-decision-plane"
+	},
+	{
+		"source": "dreamverse-harness",
+		"relation": "reference_for",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "dreamverse-harness",
+		"relation": "reference_for",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "egocaptioner",
+		"relation": "informs",
+		"target": "aios-video-rag"
 	}
 ]
