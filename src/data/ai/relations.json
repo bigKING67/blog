@@ -153,5 +153,30 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "vidtoc",
+		"relation": "informs",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "ling-3-2-air",
+		"relation": "candidate_for",
+		"target": "aios-document-pipeline"
+	},
+	{
+		"source": "ling-3-2-air",
+		"relation": "candidate_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "videcide",
+		"relation": "informs",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "shirudo",
+		"relation": "reference_for",
+		"target": "pi-67-runtime-security"
 	}
 ]
