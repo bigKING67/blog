@@ -153,5 +153,40 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "wemm-video",
+		"relation": "candidate_for",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "wemm-video",
+		"relation": "candidate_for",
+		"target": "aios-multimodal-rag"
+	},
+	{
+		"source": "videojson",
+		"relation": "informs",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "videojson",
+		"relation": "informs",
+		"target": "pi-67-context-engine"
+	},
+	{
+		"source": "fineproofenvs",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "fineproofenvs",
+		"relation": "informs",
+		"target": "aios-decision-plane"
+	},
+	{
+		"source": "robotrack",
+		"relation": "informs",
+		"target": "aios-creative-engine"
 	}
 ]
