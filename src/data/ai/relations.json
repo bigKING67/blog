@@ -153,5 +153,35 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "vibevideoagent",
+		"relation": "informs",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "vibevideoagent",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "evolink-bench",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "evolink-bench",
+		"relation": "informs",
+		"target": "pi-67-context-memory"
+	},
+	{
+		"source": "meterrouter",
+		"relation": "informs",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "meterrouter",
+		"relation": "informs",
+		"target": "aios-decision-plane"
 	}
 ]
