@@ -153,5 +153,45 @@
 		"source": "copilot-studio-process-agents-2026",
 		"relation": "reference_for",
 		"target": "aios-agent-platform"
+	},
+	{
+		"source": "home-memory-harness",
+		"relation": "reference_for",
+		"target": "pi-67-context-memory"
+	},
+	{
+		"source": "home-memory-harness",
+		"relation": "informs",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "probfas",
+		"relation": "informs",
+		"target": "aios-video-rag"
+	},
+	{
+		"source": "transharness",
+		"relation": "informs",
+		"target": "pi-67-runtime"
+	},
+	{
+		"source": "transharness",
+		"relation": "informs",
+		"target": "pi-67-evaluation"
+	},
+	{
+		"source": "agentic-longlive",
+		"relation": "informs",
+		"target": "aios-creative-engine"
+	},
+	{
+		"source": "agentic-longlive",
+		"relation": "informs",
+		"target": "aios-visual-memory"
+	},
+	{
+		"source": "skillsbench-lift-reanalysis",
+		"relation": "reference_for",
+		"target": "pi-67-evaluation"
 	}
 ]
